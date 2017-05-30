@@ -1,7 +1,10 @@
-﻿using PC.DataAccess;
+﻿using AutoMapper;
+using PC.DataAccess;
 using PC.DataAccess.Repository;
+using PC.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -24,7 +27,6 @@ namespace PC.Views
     public partial class AllPC : UserControl
     {
         private readonly PCEntities db = new PCEntities();
-        private readonly IBaseRepoAsync<Pc> repo;
         public AllPC()
         {
             InitializeComponent();
@@ -41,9 +43,13 @@ namespace PC.Views
             // 	myCollectionViewSource.Source = your data
             // }
 
-            CollectionViewSource pcViewSource = ((CollectionViewSource)(this.FindResource("pcViewSource")));
-            db.Pcs.Load();
-            pcViewSource.Source = db.Pcs.Local.Where(q => q.Active );
+            if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            {
+                CollectionViewSource pcViewSource = ((CollectionViewSource)(this.FindResource("pcViewSource")));
+                db.Pcs.Load();
+                var source = db.Pcs.Local.Where(q => q.Active);
+                pcViewSource.Source = source;
+            }
         }
     }
 }

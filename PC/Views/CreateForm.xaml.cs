@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using PC.DataAccess;
+using PC.DataAccess.Repository;
+using PC.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +24,11 @@ namespace PC.Views
     /// </summary>
     public partial class CreateForm : UserControl
     {
+        public Pc pc = new Pc();
         public CreateForm()
         {
             InitializeComponent();
+            pc_form.DataContext = pc;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -35,6 +41,30 @@ namespace PC.Views
             // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
             // 	myCollectionViewSource.Source = your data
             // }
+        }
+
+        private async void BtnSaveClickAsync(object sender, RoutedEventArgs e)
+        {
+            MetroAnimatedSingleRowTabControl mainTabControl = Util.FindParent<MetroAnimatedSingleRowTabControl>(this);
+            var currentTab = (MetroTabItem)mainTabControl.SelectedItem;
+
+            using (var db = new PCEntities())
+            {
+                try
+                {
+                    pc.Active = true;
+                    db.Pcs.Add(pc);
+                    await db.SaveChangesAsync();
+
+                    currentTab.Header = pc.PC_Name;
+                    btnSave.Content = "Saved";
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }

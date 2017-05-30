@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -69,35 +72,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\AllPC.xaml.cs">
-      <DependentUpon>AllPC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CreateForm.xaml.cs">
-      <DependentUpon>CreateForm.xaml</DependentUpon>
-    </Compile>
-    <Page Include="CreatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FilterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="IndexPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CreatePage.xaml.cs">
-      <DependentUpon>CreatePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DataAccess\Pc.cs">
       <DependentUpon>PcModel.tt</DependentUpon>
     </Compile>
@@ -116,23 +90,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PcModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repository\IBaseRepoAsync.cs" />
-    <Compile Include="DataAccess\Repository\PcReposity.cs" />
-    <Compile Include="DataAccess\Repository\UserRepository.cs" />
     <Compile Include="DataAccess\User.cs">
       <DependentUpon>PcModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FilterPage.xaml.cs">
-      <DependentUpon>FilterPage.xaml</DependentUpon>
+    <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PcViewModel.cs" />
+    <Compile Include="Views\All_Pc.xaml.cs">
+      <DependentUpon>All_Pc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IndexPage.xaml.cs">
-      <DependentUpon>IndexPage.xaml</DependentUpon>
+    <Compile Include="Views\CreateForm.xaml.cs">
+      <DependentUpon>CreateForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\Repository\IBaseRepoAsync.cs" />
+    <Compile Include="DataAccess\Repository\PcReposity.cs" />
+    <Compile Include="DataAccess\Repository\UserRepository.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AllPC.xaml">
+    <Page Include="Views\All_Pc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

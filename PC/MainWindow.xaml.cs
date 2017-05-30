@@ -1,6 +1,8 @@
 ﻿using MahApps.Metro.Controls;
 using PC.DataAccess;
 using PC.DataAccess.Repository;
+using PC.Utils;
+using PC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -24,22 +26,18 @@ namespace PC
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private readonly IBaseRepoAsync<Pc> _pcRepo;
         private PCEntities pcContext = new PCEntities();
+        private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            //System.Windows.Data.CollectionViewSource pcViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("pcViewSource")));
-            //// Load data by setting the CollectionViewSource.Source property:
-            //// pcViewSource.Source = [generic data source]
-            //pcContext.Pcs.Load();
-            //pcViewSource.Source = pcContext.Pcs.Local;
         }
+
 
         private void BtnCreateClick(object sender, RoutedEventArgs e)
         {
@@ -53,21 +51,18 @@ namespace PC
             item.Content = view;
 
             MainTabControl.Items.Add(item);
-        }
-
-        private void BtnSearchClick(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void BtnListClick(object sender, RoutedEventArgs e)
-        {
-
+            item.Focus();
         }
 
         private void MainTabControl_TabItemClosingEvent(object sender, BaseMetroTabControl.TabItemClosingEventArgs e)
         {
             if (e.ClosingTabItem.Header.ToString().StartsWith("sizes"))
                 e.Cancel = true;
+        }
+
+        private void BtnSubmitClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
