@@ -60,7 +60,7 @@ namespace PC
                 e.Cancel = true;
         }
 
-        private void BtnSubmitClick(object sender, RoutedEventArgs e)
+        private void BtnFilterClick(object sender, RoutedEventArgs e)
         {
 
         }

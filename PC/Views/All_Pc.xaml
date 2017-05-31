@@ -5,37 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PC.Views"
              xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.Views.AllPC"
+             xmlns:ViewModels="clr-namespace:PC.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    <UserControl.Resources>
-        <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
-    </UserControl.Resources>
-    <Grid DataContext="{StaticResource pcViewSource}">
+    <!--<UserControl.Resources>
+        <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModels:PcViewModel}, CreateList=True}"/>
+    </UserControl.Resources>-->
+    <!--<Grid DataContext="{StaticResource pcViewSource}">-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
         <DataGrid x:Name="pcDataGrid" 
+                  Grid.Row="0"
                   RowDetailsVisibilityMode="VisibleWhenSelected" 
                   Margin="0,10,0,0" ItemsSource="{Binding}" 
                   EnableRowVirtualization="True" 
                   AutoGenerateColumns="False" 
                   ColumnWidth="*" 
                   HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                  Style="{DynamicResource AzureDataGrid}">
-            
+                  Style="{DynamicResource AzureDataGrid}"
+                  RowEditEnding="PcViewSource_RowEditEnding">
+
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn x:Name="cb_Colum" Width="*" Binding="{Binding IsSelected, Mode=TwoWay}"/>
-                <DataGridTextColumn x:Name="pC_NameColumn" Width="*" Header="Tên" Binding="{Binding PC_Name}"/>
-                <DataGridTextColumn x:Name="nVColumn" Width="*" Header="NV" Binding="{Binding NV}"/>
-                <DataGridTextColumn x:Name="pBColumn" Width="*" Header="PB" Binding="{Binding PB}"/>
-                <DataGridTextColumn x:Name="iPColumn" Width="*" Header="IP" Binding="{Binding IP}"/>
-                <DataGridTextColumn x:Name="mACColumn" Width="*" Header="MAC" Binding="{Binding MAC}"/>
-                <DataGridTextColumn x:Name="office_LocatedColumn" Width="*" Header="Office Located" Binding="{Binding Office_Located}"/>
-                <DataGridTextColumn x:Name="cPUColumn" Width="*" Header="CPU" Binding="{Binding CPU}"/>
-                <DataGridTextColumn x:Name="hDDColumn" Width="*" Header="HDD" Binding="{Binding HDD}"/>
-                <DataGridTextColumn x:Name="oSColumn" Width="*" Header="OS" Binding="{Binding OS}"/>
-                <DataGridTextColumn x:Name="rAMColumn" Width="*" Header="RAM" Binding="{Binding RAM}"/>
-                <DataGridTextColumn x:Name="typeColumn" Width="*" Header="Type" Binding="{Binding Type}"/>
+                <DataGridTemplateColumn >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="pC_NameColumn" Width="*" Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="nVColumn" Width="*" Header="NV" Binding="{Binding NV, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="pBColumn" Width="*" Header="PB" Binding="{Binding PB, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="iPColumn" Width="*" Header="IP" Binding="{Binding IP, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="mACColumn" Width="*" Header="MAC" Binding="{Binding MAC, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="office_LocatedColumn" Width="*" Header="Office Located" Binding="{Binding Office_Located, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="cPUColumn" Width="*" Header="CPU" Binding="{Binding CPU, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="hDDColumn" Width="*" Header="HDD" Binding="{Binding HDD, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="oSColumn" Width="*" Header="OS" Binding="{Binding OS, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="rAMColumn" Width="*" Header="RAM" Binding="{Binding RAM, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="typeColumn" Width="*" Header="Type" Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
 
+        <Button Grid.Row="1" Content="Delete"
+                Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="BtnDeleteClicked"/>
     </Grid>
 </UserControl>

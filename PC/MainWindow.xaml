@@ -32,42 +32,9 @@
             <MenuItem Header="Create"
                       ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"
                       Click="BtnCreateClick"/>
-            <MenuItem Header="Search"
-                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"/>
-            <MenuItem Header="Update"
-                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"/>
-            <MenuItem Header="Delete"
-                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"/>
+            <MenuItem Header="Filter"
+                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" Click="BtnFilterClick"/>
         </Menu>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBox Grid.Column="0"
-                 Controls:TextBoxHelper.ButtonCommand="{Binding TxtSearchCmt, Mode=OneWay}"
-                 Controls:TextBoxHelper.UseFloatingWatermark="True"
-                 Controls:TextBoxHelper.Watermark="Search.."
-                 Controls:TextBoxHelper.ClearTextButton="True">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Return"
-                            Command="{Binding TxtSearchCmt, Mode=OneWay}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=TextBox}, Path=Text, Mode=OneWay}" />
-                </TextBox.InputBindings>
-                <TextBox.Style>
-                    <Style BasedOn="{StaticResource SearchMetroTextBox}" TargetType="{x:Type TextBox}">
-                        <Style.Triggers>
-                            <Trigger Property="Controls:TextBoxHelper.HasText" Value="True">
-                                <Setter Property="Controls:TextBoxHelper.ButtonContent" Value="r" />
-                                <Setter Property="Controls:TextBoxHelper.ButtonContentTemplate" Value="{x:Null}" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
-            <Button Grid.Column="1" Width="100" Content="Submit" Margin="30 0 0 0" Click="BtnSubmitClick"/>
-        </Grid>
         <Controls:MetroAnimatedSingleRowTabControl 
             TabItemClosingEvent="MainTabControl_TabItemClosingEvent" 
             x:Name="MainTabControl"

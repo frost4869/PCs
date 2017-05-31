@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
 
         <Grid x:Name="pc_form" VerticalAlignment="Top" Margin="0,41,0,0" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
@@ -51,7 +51,7 @@
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Type:"/>
             <TextBox x:Name="typeTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
         </Grid>
-        <Button x:Name="btnSave"  Content="Save" HorizontalAlignment="Left" Margin="286,387,0,0" VerticalAlignment="Top" Width="224" HorizontalContentAlignment="Center" FontSize="14" Click="BtnSaveClickAsync"/>
+        <Button x:Name="btnSave"  Content="Save" Margin="286,387,0,0" VerticalAlignment="Top" Width="224" HorizontalContentAlignment="Center" FontSize="14" Click="BtnSaveClickAsync" HorizontalAlignment="Left"/>
 
     </Grid>
 </UserControl>
