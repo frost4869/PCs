@@ -7,15 +7,18 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PC_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="HDD" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="CPU" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="RAM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HDD" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPU" Type="nvarchar" MaxLength="100" />
+    <Property Name="RAM" Type="nvarchar" MaxLength="50" />
     <Property Name="OS" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="MAC" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="NV" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAC2" Type="nvarchar" MaxLength="50" />
+    <Property Name="NV" Type="nvarchar" MaxLength="100" />
+    <Property Name="NVCode" Type="int" />
     <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="User">

@@ -4,6 +4,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using PC.DataAccess;
 using PC.DataAccess.Repository;
+using PC.Utils;
 using PC.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -50,11 +51,6 @@ namespace PC.Views
             }
         }
 
-        public ObservableCollection<T> ToObservableCollection<T>(IEnumerable<T> enumeration)
-        {
-            return new ObservableCollection<T>(enumeration);
-        }
-
         private async void BtnDeleteClicked(object sender, RoutedEventArgs e)
         {
             var result = ShowMessageBox("Delete ?", "Are you sure to delete selected records ?");
@@ -73,10 +69,8 @@ namespace PC.Views
                 }
                 await db.SaveChangesAsync();
             }
-            else
-            {
-                LoadDataSource();
-            }
+
+            LoadDataSource();
         }
 
         private async void PcViewSource_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
@@ -117,7 +111,7 @@ namespace PC.Views
             var pcViewModelList = db.Pcs.Where(q => q.Active)
                    .ProjectTo<PcViewModel>(config);
 
-            pcViewSource = ToObservableCollection(pcViewModelList);
+            pcViewSource = Util.ToObservableCollection(pcViewModelList);
             pcDataGrid.ItemsSource = pcViewSource;
         }
 

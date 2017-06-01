@@ -23,9 +23,12 @@ namespace PC.DataAccess
         public string OS { get; set; }
         public string IP { get; set; }
         public string MAC { get; set; }
+        public string MAC2 { get; set; }
         public string NV { get; set; }
+        public Nullable<int> NVCode { get; set; }
         public string PB { get; set; }
         public string Office_Located { get; set; }
+        public string ServiceTag { get; set; }
         public bool Active { get; set; }
     }
 }

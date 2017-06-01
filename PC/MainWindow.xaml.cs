@@ -62,7 +62,17 @@ namespace PC
 
         private void BtnFilterClick(object sender, RoutedEventArgs e)
         {
+            MetroTabItem item = new MetroTabItem
+            {
+                Header = "Filter",
+                CloseButtonEnabled = true,
+            };
 
+            Views.Filter view = new Views.Filter();
+            item.Content = view;
+
+            MainTabControl.Items.Add(item);
+            item.Focus();
         }
     }
 }

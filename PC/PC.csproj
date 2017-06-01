@@ -55,6 +55,9 @@
     <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.9.0\lib\net45\MahApps.Metro.IconPacks.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -106,7 +109,9 @@
       <DependentUpon>PcModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\Enum.cs" />
     <Compile Include="Utils\Util.cs" />
+    <Compile Include="ViewModels\FilterModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PcViewModel.cs" />
     <Compile Include="Views\All_Pc.xaml.cs">
@@ -114,6 +119,12 @@
     </Compile>
     <Compile Include="Views\CreateForm.xaml.cs">
       <DependentUpon>CreateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilteriItem.xaml.cs">
+      <DependentUpon>FilteriItem.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +146,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Filter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FilteriItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

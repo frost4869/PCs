@@ -25,7 +25,7 @@ namespace PC.DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Pc> Pcs { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Pc> Pcs { get; set; }
     }
 }

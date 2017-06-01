@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Pc">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,15 +12,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PC_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="HDD" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CPU" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="RAM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HDD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CPU" Type="nvarchar" MaxLength="100" />
+          <Property Name="RAM" Type="nvarchar" MaxLength="50" />
           <Property Name="OS" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MAC" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="NV" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAC2" Type="nvarchar" MaxLength="50" />
+          <Property Name="NV" Type="nvarchar" MaxLength="100" />
+          <Property Name="NVCode" Type="int" />
           <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
@@ -35,29 +38,10 @@
           <EntitySet Name="Pc" EntityType="Self.Pc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Pc">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PC_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MAC" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NV" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Office_Located" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -67,40 +51,64 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="PCEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Pcs" EntityType="Self.Pc" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
         </EntityContainer>
+        <EntityType Name="Pc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PC_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NVCode" Type="Int32" />
+          <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PCModelStoreContainer" CdmEntityContainer="PCEntities">
-          <EntitySetMapping Name="Pcs">
-            <EntityTypeMapping TypeName="PCModel.Pc">
-              <MappingFragment StoreEntitySet="Pc">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="HDD" ColumnName="HDD" />
-                <ScalarProperty Name="CPU" ColumnName="CPU" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="OS" ColumnName="OS" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="MAC" ColumnName="MAC" />
-                <ScalarProperty Name="NV" ColumnName="NV" />
-                <ScalarProperty Name="PB" ColumnName="PB" />
-                <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PCModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pcs">
+            <EntityTypeMapping TypeName="PCModel.Pc">
+              <MappingFragment StoreEntitySet="Pc">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
+                <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
+                <ScalarProperty Name="PB" ColumnName="PB" />
+                <ScalarProperty Name="NVCode" ColumnName="NVCode" />
+                <ScalarProperty Name="NV" ColumnName="NV" />
+                <ScalarProperty Name="MAC2" ColumnName="MAC2" />
+                <ScalarProperty Name="MAC" ColumnName="MAC" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="HDD" ColumnName="HDD" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

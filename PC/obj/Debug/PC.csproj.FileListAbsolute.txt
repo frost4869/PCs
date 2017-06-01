@@ -41,3 +41,10 @@ E:\Projects\PC\PC\obj\Debug\PC.csproj.GenerateResource.Cache
 E:\Projects\PC\PC\obj\Debug\PC.exe
 E:\Projects\PC\PC\obj\Debug\PC.pdb
 E:\Projects\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
+E:\Projects\PC\PC\obj\Debug\Views\Filter.g.cs
+E:\Projects\PC\PC\obj\Debug\Views\Filter.baml
+E:\Projects\PC\PC\bin\Debug\MahApps.Metro.IconPacks.dll
+E:\Projects\PC\PC\bin\Debug\MahApps.Metro.IconPacks.pdb
+E:\Projects\PC\PC\bin\Debug\MahApps.Metro.IconPacks.xml
+E:\Projects\PC\PC\obj\Debug\Views\FilteriItem.g.cs
+E:\Projects\PC\PC\obj\Debug\Views\FilteriItem.baml

@@ -14,12 +14,17 @@
     <!--<Grid DataContext="{StaticResource pcViewSource}">-->
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <Button Grid.Row="0" Content="Delete"
+                Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="BtnDeleteClicked"
+                Margin="0 5 10 10"
+                Style="{DynamicResource SquareButtonStyle}"/>
+        
         <DataGrid x:Name="pcDataGrid" 
-                  Grid.Row="0"
+                  Grid.Row="1"
                   RowDetailsVisibilityMode="VisibleWhenSelected" 
                   Margin="0,10,0,0" ItemsSource="{Binding}" 
                   EnableRowVirtualization="True" 
@@ -27,7 +32,8 @@
                   ColumnWidth="*" 
                   HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                   Style="{DynamicResource AzureDataGrid}"
-                  RowEditEnding="PcViewSource_RowEditEnding">
+                  RowEditEnding="PcViewSource_RowEditEnding"
+                  GridLinesVisibility="All">
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
@@ -51,7 +57,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Content="Delete"
-                Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="BtnDeleteClicked"/>
+        
     </Grid>
 </UserControl>
