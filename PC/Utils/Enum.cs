@@ -11,7 +11,8 @@ namespace PC.Utils
         Pc_Name,
         PB,
         NV,
-        MAC, 
+        MAC,
+        MAC2,
         IP
     }
 }

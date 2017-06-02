@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:PC.Views"
              xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.Views.AllPC"
              xmlns:ViewModels="clr-namespace:PC.ViewModels"
-             mc:Ignorable="d" 
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <!--<UserControl.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModels:PcViewModel}, CreateList=True}"/>
@@ -17,23 +18,47 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style x:Key="CustomMetroToggleSwitchButton"
+                       BasedOn="{StaticResource MahApps.Metro.Styles.ToggleSwitchButton}"
+                       TargetType="{x:Type Controls:ToggleSwitchButton}">
+                    <Setter Property="SwitchForeground" Value="YellowGreen" />
+                </Style>
+            </StackPanel.Resources>
+            <Controls:ToggleSwitch Margin="10 5 0 0"
+                                   x:Name="btn_toggle_edit"
+                                   Header="Edit Mode"
+                                   IsChecked="False"
+                                   ToggleSwitchButtonStyle="{StaticResource CustomMetroToggleSwitchButton}" 
+                                   Checked="BtnEditChecked" Unchecked="BtnEditUnchecked"/>
 
-        <Button Grid.Row="0" Content="Delete"
-                Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="BtnDeleteClicked"
-                Margin="0 5 10 10"
-                Style="{DynamicResource SquareButtonStyle}"/>
-        
+            <Button Grid.Row="0" x:Name="BtnUpdate" Content="Update"
+                Width="100" HorizontalContentAlignment="Center"
+                Margin="10 15 0 15"
+                Style="{DynamicResource SquareButtonStyle}"
+                Visibility="Hidden" Click="BtnUpdateClicked"/>
+
+            <Button Grid.Row="0" x:Name="BtnDelete" Content="Delete"
+                Width="100" HorizontalContentAlignment="Center" Click="BtnDeleteClicked"
+                Margin="10 15 0 15"
+                Style="{DynamicResource SquareButtonStyle}"
+                Visibility="Hidden"/>
+        </StackPanel>
+
         <DataGrid x:Name="pcDataGrid" 
                   Grid.Row="1"
                   RowDetailsVisibilityMode="VisibleWhenSelected" 
                   Margin="0,10,0,0" ItemsSource="{Binding}" 
                   EnableRowVirtualization="True" 
                   AutoGenerateColumns="False" 
+                  CanUserAddRows="False"
                   ColumnWidth="*" 
                   HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                   Style="{DynamicResource AzureDataGrid}"
-                  RowEditEnding="PcViewSource_RowEditEnding"
-                  GridLinesVisibility="All">
+                  GridLinesVisibility="All"
+                  IsReadOnly="True"
+                  RowEditEnding="PcViewSource_RowEditEnding">
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
@@ -45,9 +70,11 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn x:Name="pC_NameColumn" Width="*" Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="nVColumn" Width="*" Header="NV" Binding="{Binding NV, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="nVCodeColumn" Width="*" Header="NVCode" Binding="{Binding NVCode, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="pBColumn" Width="*" Header="PB" Binding="{Binding PB, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="iPColumn" Width="*" Header="IP" Binding="{Binding IP, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="mACColumn" Width="*" Header="MAC" Binding="{Binding MAC, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn x:Name="mAC2Column" Width="*" Header="MAC 2" Binding="{Binding MAC2, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="office_LocatedColumn" Width="*" Header="Office Located" Binding="{Binding Office_Located, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="cPUColumn" Width="*" Header="CPU" Binding="{Binding CPU, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn x:Name="hDDColumn" Width="*" Header="HDD" Binding="{Binding HDD, UpdateSourceTrigger=PropertyChanged}"/>
@@ -56,7 +83,5 @@
                 <DataGridTextColumn x:Name="typeColumn" Width="*" Header="Type" Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        
     </Grid>
 </UserControl>

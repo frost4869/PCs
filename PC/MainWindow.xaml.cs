@@ -1,23 +1,9 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using PC.DataAccess;
-using PC.DataAccess.Repository;
-using PC.Utils;
 using PC.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PC
 {
@@ -34,10 +20,31 @@ namespace PC
             DataContext = viewModel;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Title = "Quản lí PC";
+            await AuthorizeAsync("Enter Username and Password.");
         }
 
+        private async Task AuthorizeAsync(string message)
+        {
+            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true });
+            if (result != null)
+            {
+                using (var db = new PCEntities())
+                {
+                    var user = await db.Users.FindAsync(result.Username);
+                    if (user != null)
+                    {
+                        MainWindowContent.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        await AuthorizeAsync("Wrong Username or Password, try again.");
+                    }
+                }
+            }
+        }
 
         private void BtnCreateClick(object sender, RoutedEventArgs e)
         {

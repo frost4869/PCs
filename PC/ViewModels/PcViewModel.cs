@@ -11,6 +11,8 @@ namespace PC.ViewModels
     class PcViewModel : Pc, INotifyPropertyChanged
     {
         private bool mIsSelected;
+        private bool mIsUpdated;
+
         public bool IsSelected
         {
             get
@@ -21,6 +23,19 @@ namespace PC.ViewModels
             {
                 mIsSelected = value;
                 OnPropertyChanged("IsSelected");
+            }
+        }
+
+        public bool IsUpdated
+        {
+            get
+            {
+                return mIsUpdated;
+            }
+            set
+            {
+                mIsUpdated = value;
+                OnPropertyChanged("IsUpdated");
             }
         }
 

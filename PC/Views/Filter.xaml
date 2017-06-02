@@ -91,9 +91,11 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="pC_NameColumn" Width="*" Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="nVColumn" Width="*" Header="NV" Binding="{Binding NV, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="nVCodeColumn" Width="*" Header="NVCode" Binding="{Binding NVCode, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="pBColumn" Width="*" Header="PB" Binding="{Binding PB, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="iPColumn" Width="*" Header="IP" Binding="{Binding IP, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="mACColumn" Width="*" Header="MAC" Binding="{Binding MAC, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="mAC2Column" Width="*" Header="MAC 2" Binding="{Binding MAC2, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="office_LocatedColumn" Width="*" Header="Office Located" Binding="{Binding Office_Located, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="cPUColumn" Width="*" Header="CPU" Binding="{Binding CPU, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="hDDColumn" Width="*" Header="HDD" Binding="{Binding HDD, UpdateSourceTrigger=PropertyChanged}"/>

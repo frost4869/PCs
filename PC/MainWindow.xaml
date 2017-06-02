@@ -19,7 +19,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid x:Name="MainWindowContent" Visibility="Hidden">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

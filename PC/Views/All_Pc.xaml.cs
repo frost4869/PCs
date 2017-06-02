@@ -38,6 +38,7 @@ namespace PC.Views
             q.CreateMap<Pc, PcViewModel>();
             q.CreateMap<PcViewModel, Pc>();
         });
+        private int changesCounts = 0;
         public AllPC()
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace PC.Views
         {
             var result = ShowMessageBox("Delete ?", "Are you sure to delete selected records ?");
 
-            if(result == MessageDialogResult.Affirmative)
+            if (result == MessageDialogResult.Affirmative)
             {
                 var selectedList = pcViewSource.Where(q => q.IsSelected)
                 .AsQueryable()
@@ -73,37 +74,12 @@ namespace PC.Views
             LoadDataSource();
         }
 
-        private async void PcViewSource_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        private void PcViewSource_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            var edited_pc = e.Row.DataContext as Pc;
-            var entity = config.CreateMapper().Map<Pc>(edited_pc);
-           
-            //update a pc
-            if (edited_pc.ID > 0)
-            {
-                var result = ShowMessageBox("Confirm", "Are you sure to update this record ?");
-                if (result == MessageDialogResult.Affirmative)
-                {
-                    db.Pcs.Attach(entity);
-                    db.Entry(entity).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                }
-                else
-                {
-                    LoadDataSource();
-                }
-            }
-            //add a new pc
-            else
-            {
-                var result = ShowMessageBox("Confirm", "Are you sure to create this pc: " + entity.PC_Name + " ?");
-                if (result == MessageDialogResult.Affirmative)
-                {
-                    entity.Active = true;
-                    db.Pcs.Add(entity);
-                    await db.SaveChangesAsync();
-                }
-            }
+            ++changesCounts;
+            e.Row.Background = Brushes.GreenYellow;
+            var edited_pc = e.Row.DataContext as PcViewModel;
+            pcViewSource.FirstOrDefault(q => q.ID == edited_pc.ID).IsUpdated = true;
         }
 
         private void LoadDataSource()
@@ -129,6 +105,97 @@ namespace PC.Views
                     MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, messDialogSetting);
 
             return result;
+        }
+
+        private async void ShowMessageBoxAsync(string title, string mess)
+        {
+            var metroWindow = (Application.Current.MainWindow as MetroWindow);
+            await metroWindow.ShowMessageAsync(title, mess);
+        }
+
+        private void BtnEditChecked(object sender, RoutedEventArgs e)
+        {
+            BtnDelete.Visibility = Visibility.Visible;
+            BtnUpdate.Visibility = Visibility.Visible;
+            pcDataGrid.IsReadOnly = false;
+        }
+
+        private async void BtnEditUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (changesCounts > 0)
+            {
+                var result = ShowMessageBox("Save changes ?", "Do you want to save changes before turn off edit mode ?");
+                if (result == MessageDialogResult.Affirmative)
+                {
+                    await UpdateAsync();
+                    BtnDelete.Visibility = Visibility.Hidden;
+                    BtnUpdate.Visibility = Visibility.Hidden;
+                    pcDataGrid.IsReadOnly = true;
+
+                    LoadDataSource();
+                }
+                else if (result == MessageDialogResult.FirstAuxiliary)
+                {
+                    btn_toggle_edit.IsChecked = true;
+                }
+                else
+                {
+                    BtnDelete.Visibility = Visibility.Hidden;
+                    BtnUpdate.Visibility = Visibility.Hidden;
+                    pcDataGrid.IsReadOnly = true;
+
+                    LoadDataSource();
+                }
+            }
+            else
+            {
+                BtnDelete.Visibility = Visibility.Hidden;
+                BtnUpdate.Visibility = Visibility.Hidden;
+                pcDataGrid.IsReadOnly = true;
+
+                LoadDataSource();
+            }
+            
+        }
+
+        private async void BtnUpdateClicked(object sender, RoutedEventArgs e)
+        {
+            var result = ShowMessageBox("Confirm", "Are you sure to update modified records (highlighted)?");
+            if (result == MessageDialogResult.Affirmative)
+            {
+                await UpdateAsync();
+                LoadDataSource();
+                BtnDelete.Visibility = Visibility.Hidden;
+                BtnUpdate.Visibility = Visibility.Hidden;
+                pcDataGrid.IsReadOnly = true;
+            }
+        }
+
+        private async Task UpdateAsync()
+        {
+            var mapper = config.CreateMapper();
+
+            using (var db = new PCEntities())
+            {
+                foreach (var item in pcViewSource)
+                {
+                    if (item.IsUpdated)
+                    {
+                        try
+                        {
+                            var entity = mapper.Map<Pc>(item);
+                            //update a pc
+                            db.Pcs.Attach(entity);
+                            db.Entry(entity).State = EntityState.Modified;
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
+                        }
+                    }
+                }
+                await db.SaveChangesAsync();
+            }
         }
     }
 }

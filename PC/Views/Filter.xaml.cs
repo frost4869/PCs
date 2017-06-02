@@ -60,7 +60,7 @@ namespace PC.Views
 
                         var filterText = ((item as FilteriItem).FindName("filter_value") as TextBox).Text;
 
-                        result = LoadDataSource(result, filterOption, filterText);
+                        result = LoadDataSource(result, filterOption, filterText.ToLower());
                     }
                 }
 
@@ -85,16 +85,19 @@ namespace PC.Views
                     switch (option.Value)
                     {
                         case Filters.Pc_Name:
-                            PcList = PcList.Where(q => q.PC_Name.Contains(query));
+                            PcList = PcList.Where(q => q.PC_Name.ToLower().Contains(query));
                             break;
                         case Filters.PB:
-                            PcList = PcList.Where(q => q.PB.Equals(query));
+                            PcList = PcList.Where(q => q.PB.ToLower().Equals(query));
                             break;
                         case Filters.NV:
-                            PcList = PcList.Where(q => q.NV.Equals(query));
+                            PcList = PcList.Where(q => q.NV.ToLower().Equals(query));
                             break;
                         case Filters.MAC:
                             PcList = PcList.Where(q => q.MAC.Equals(query));
+                            break;
+                        case Filters.MAC2:
+                            PcList = PcList.Where(q => q.MAC2.Equals(query));
                             break;
                         case Filters.IP:
                             PcList = PcList.Where(q => q.IP.Equals(query));
