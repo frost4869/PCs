@@ -22,12 +22,13 @@ namespace PC
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "Quản lí PC";
+            this.Title = "Quản lý PC";
             await AuthorizeAsync("Enter Username and Password.");
         }
 
         private async Task AuthorizeAsync(string message)
         {
+            ShowDialogsOverTitleBar = false;
             LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true });
             if (result != null)
             {

@@ -128,12 +128,13 @@
     </Compile>
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\Enum.cs" />
+    <Compile Include="Utils\PcValidation.cs" />
     <Compile Include="Utils\Util.cs" />
     <Compile Include="ViewModels\FilterModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PcViewModel.cs" />
-    <Compile Include="Views\All_Pc.xaml.cs">
-      <DependentUpon>All_Pc.xaml</DependentUpon>
+    <Compile Include="Views\AllPC.xaml.cs">
+      <DependentUpon>AllPC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateForm.xaml.cs">
       <DependentUpon>CreateForm.xaml</DependentUpon>
@@ -159,7 +160,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\All_Pc.xaml">
+    <Page Include="Views\AllPC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

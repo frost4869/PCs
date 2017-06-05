@@ -13,6 +13,7 @@ using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace PC.Views
 {
@@ -76,10 +78,11 @@ namespace PC.Views
 
         private void PcViewSource_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
+            var edited_pc = e.Row.DataContext as PcViewModel;
+
+            pcViewSource.FirstOrDefault(q => q.ID == edited_pc.ID).IsUpdated = true;
             ++changesCounts;
             e.Row.Background = Brushes.GreenYellow;
-            var edited_pc = e.Row.DataContext as PcViewModel;
-            pcViewSource.FirstOrDefault(q => q.ID == edited_pc.ID).IsUpdated = true;
         }
 
         private void LoadDataSource()
@@ -165,9 +168,6 @@ namespace PC.Views
             {
                 await UpdateAsync();
                 LoadDataSource();
-                BtnDelete.Visibility = Visibility.Hidden;
-                BtnUpdate.Visibility = Visibility.Hidden;
-                pcDataGrid.IsReadOnly = true;
             }
         }
 
@@ -196,6 +196,9 @@ namespace PC.Views
                 }
                 await db.SaveChangesAsync();
             }
+
+            changesCounts = 0;
         }
+
     }
 }

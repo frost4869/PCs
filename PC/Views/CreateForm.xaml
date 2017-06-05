@@ -31,32 +31,32 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Tên PC:"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Tên PC:"/>
             <TextBox x:Name="pC_NameTextBox" Width="300" VerticalAlignment="Center" Text="{Binding PC_Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nhân Viên:"/>
             <TextBox x:Name="nVTextBox" Width="300" VerticalAlignment="Center" Text="{Binding NV, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Mã Nhân viên:"/>
             <TextBox x:Name="nVCodeTextBox" Width="300" VerticalAlignment="Center" Text="{Binding NVCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Phòng ban:"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Phòng ban:"/>
             <TextBox x:Name="pBTextBox" Width="300" VerticalAlignment="Center" Text="{Binding PB, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="IP:"/>
             <TextBox x:Name="iPTextBox" Width="300" VerticalAlignment="Center" Text="{Binding IP, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="MAC:"/>
-            <xctk:MaskedTextBox Mask="aa:aa:aa:aa:aa:aa" x:Name="mACTextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* MAC:"/>
+            <TextBox x:Name="mACTextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="MAC 2:"/>
-            <xctk:MaskedTextBox Mask="aa:aa:aa:aa:aa:aa" x:Name="mAC2TextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Office Located:"/>
+            <TextBox x:Name="mAC2TextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Office Located:"/>
             <TextBox x:Name="office_LocatedTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Office_Located, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="CPU:"/>
             <TextBox x:Name="cPUTextBox" Width="300" VerticalAlignment="Center" Text="{Binding CPU, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="HDD:"/>
             <TextBox x:Name="hDDTextBox" Width="300" VerticalAlignment="Center" Text="{Binding HDD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="OS:"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="* OS:"/>
             <TextBox x:Name="oSTextBox" Width="300" VerticalAlignment="Center" Text="{Binding OS, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="RAM:"/>
             <TextBox x:Name="rAMTextBox" Width="300" VerticalAlignment="Center" Text="{Binding RAM, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Type:"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="* Type:"/>
             <TextBox x:Name="typeTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Service Tag:"/>
             <TextBox x:Name="serviceTagTextBox" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
