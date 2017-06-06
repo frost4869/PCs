@@ -29,7 +29,8 @@ namespace PC
         private async Task AuthorizeAsync(string message)
         {
             ShowDialogsOverTitleBar = false;
-            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true });
+            ShowCloseButton = true;
+            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true});
             if (result != null)
             {
                 using (var db = new PCEntities())

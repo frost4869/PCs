@@ -82,7 +82,6 @@ namespace PC.Views
 
             pcViewSource.FirstOrDefault(q => q.ID == edited_pc.ID).IsUpdated = true;
             ++changesCounts;
-            e.Row.Background = Brushes.GreenYellow;
         }
 
         private void LoadDataSource()
@@ -158,7 +157,7 @@ namespace PC.Views
 
                 LoadDataSource();
             }
-            
+
         }
 
         private async void BtnUpdateClicked(object sender, RoutedEventArgs e)
@@ -174,27 +173,33 @@ namespace PC.Views
         private async Task UpdateAsync()
         {
             var mapper = config.CreateMapper();
-
-            using (var db = new PCEntities())
+            try
             {
-                foreach (var item in pcViewSource)
+                using (var db = new PCEntities())
                 {
-                    if (item.IsUpdated)
+                    foreach (var item in pcViewSource)
                     {
-                        try
+                        var entity = mapper.Map<Pc>(item);
+
+                        if (item.ID == 0)
                         {
-                            var entity = mapper.Map<Pc>(item);
+                            //ad new pc
+                            entity.Active = true;
+                            db.Pcs.Add(entity);
+                        }
+                        else if (item.IsUpdated)
+                        {
                             //update a pc
                             db.Pcs.Attach(entity);
                             db.Entry(entity).State = EntityState.Modified;
                         }
-                        catch (Exception ex)
-                        {
-                            ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
-                        }
                     }
+                    await db.SaveChangesAsync();
                 }
-                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
             }
 
             changesCounts = 0;
