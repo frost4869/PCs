@@ -5,12 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:PC.Views"
+             xmlns:validations="clr-namespace:PC.Utils"
              xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.Views.CreateForm"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                    <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White" />
+                </Border>
+                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                    <Border BorderBrush="red" BorderThickness="1" />
+                </AdornedElementPlaceholder>
+            </DockPanel>
+        </ControlTemplate>
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                              Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="buttonInError" TargetType="Button">
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=pC_NameTextBox}" Value="true"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
+
     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="590">
 
         <Grid x:Name="pc_form" VerticalAlignment="Top" Margin="0,41,0,0" HorizontalAlignment="Center">
@@ -32,7 +65,23 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Tên PC:"/>
-            <TextBox x:Name="pC_NameTextBox" Width="300" VerticalAlignment="Center" Text="{Binding PC_Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="pC_NameTextBox" Width="300" VerticalAlignment="Center" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Style="{StaticResource textBoxInError}">
+
+                <TextBox.Text>
+                    <Binding Path="PC_Name"
+                             Mode="TwoWay"
+                             NotifyOnValidationError="True"
+                             ValidatesOnExceptions="True"
+                             ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <validations:NewPcValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                
+            </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nhân Viên:"/>
             <TextBox x:Name="nVTextBox" Width="300" VerticalAlignment="Center" Text="{Binding NV, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Mã Nhân viên:"/>
@@ -60,7 +109,8 @@
             <TextBox x:Name="typeTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Service Tag:"/>
             <TextBox x:Name="serviceTagTextBox" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Button x:Name="btnSave" Grid.Row="8" Grid.Column="3"  Content="Save" Width="100"   HorizontalContentAlignment="Center" FontSize="14" Click="BtnSaveClickAsync" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 100 0"/>
+            <Button x:Name="btnSave" Content="save" Grid.Row="8" Grid.Column="3" Width="100"   HorizontalContentAlignment="Center" Click="BtnSaveClickAsync" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 100 0"
+                    Style="{StaticResource buttonInError}" Height="30" FontSize="16" FontWeight="Bold"/>
         </Grid>
     </Grid>
 

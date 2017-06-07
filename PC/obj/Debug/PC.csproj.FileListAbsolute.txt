@@ -4,9 +4,6 @@ E:\Projects\PC\PC\bin\Debug\PC.pdb
 E:\Projects\PC\PC\bin\Debug\AutoMapper.dll
 E:\Projects\PC\PC\bin\Debug\EntityFramework.dll
 E:\Projects\PC\PC\bin\Debug\EntityFramework.SqlServer.dll
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.dll
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Extras.dll
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Platform.dll
 E:\Projects\PC\PC\bin\Debug\MahApps.Metro.dll
 E:\Projects\PC\PC\bin\Debug\MahApps.Metro.IconPacks.dll
 E:\Projects\PC\PC\bin\Debug\Microsoft.Practices.ServiceLocation.dll
@@ -20,12 +17,6 @@ E:\Projects\PC\PC\bin\Debug\Xceed.Wpf.Toolkit.dll
 E:\Projects\PC\PC\bin\Debug\AutoMapper.xml
 E:\Projects\PC\PC\bin\Debug\EntityFramework.xml
 E:\Projects\PC\PC\bin\Debug\EntityFramework.SqlServer.xml
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.pdb
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.xml
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-E:\Projects\PC\PC\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 E:\Projects\PC\PC\bin\Debug\MahApps.Metro.pdb
 E:\Projects\PC\PC\bin\Debug\MahApps.Metro.xml
 E:\Projects\PC\PC\bin\Debug\MahApps.Metro.IconPacks.pdb

@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PC"
         xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Loaded="Window_Loaded" Icon="E:\Projects\PC\PC\Content\pc.ico">
+        Title="MainWindow" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
         <Style x:Key="AppThemeMenuItemStyle"
