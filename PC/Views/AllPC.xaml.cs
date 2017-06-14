@@ -25,6 +25,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.Data;
+using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace PC.Views
 {
@@ -109,7 +112,7 @@ namespace PC.Views
             return result;
         }
 
-        private async void ShowMessageBoxAsync(string title, string mess)
+        private async Task ShowMessageBoxAsync(string title, string mess)
         {
             var metroWindow = (Application.Current.MainWindow as MetroWindow);
             await metroWindow.ShowMessageAsync(title, mess);
@@ -202,10 +205,87 @@ namespace PC.Views
             }
             catch (Exception ex)
             {
-                ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
+                await ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
             }
 
             changesCounts = 0;
+        }
+
+        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        {
+
+            var list = pcViewSource.AsQueryable().ProjectTo<Pc>(config).ToList();
+            var dataTable = Util.ToDataTable<Pc>(list);
+            ExportExcelAsync(dataTable);
+
+        }
+
+
+        private async void ExportExcelAsync(DataTable dt)
+        {
+            var metroWindow = (Application.Current.MainWindow as MetroWindow);
+            var controller = await metroWindow.ShowProgressAsync("Export Excel", "Please wait...");
+            controller.SetIndeterminate();
+            await Task.Delay(1000);
+
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.DisplayAlerts = false;
+            excel.Visible = false;
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+            var datetime = DateTime.Now.ToString();
+            worksheet.Name = "Pc List " + datetime.Replace("/", ".").Replace(":", "-");
+            Microsoft.Office.Interop.Excel.Range cellRange;
+            try
+            {
+                var tempDT = dt;
+
+                var rowCount = 1;
+                Microsoft.Office.Interop.Excel.Range rng = worksheet.Cells[1, 1] as Microsoft.Office.Interop.Excel.Range;
+                rng.EntireRow.Font.Bold = true;
+
+                for (int i = 1; i < tempDT.Columns.Count - 1; i++)
+                {
+                    worksheet.Cells[1, i] = tempDT.Columns[i].ColumnName;
+                }
+
+                foreach (DataRow row in tempDT.Rows)
+                {
+                    rowCount += 1;
+                    for (int i = 1; i < tempDT.Columns.Count - 1; i++) //taking care of each column  
+                    {
+                        worksheet.Cells[rowCount, i] = row[i].ToString();
+                    }
+                }
+
+                cellRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[rowCount, tempDT.Columns.Count]];
+                cellRange.EntireColumn.AutoFit();
+
+                await controller.CloseAsync();
+
+                //Getting the location and file name of the excel to save from user.
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == true)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    await ShowMessageBoxAsync("Message", "Exported Successfully at " + workbook.Path);
+                }
+            }
+            catch (Exception ex)
+            {
+                await controller.CloseAsync();
+                await ShowMessageBoxAsync("Error", ex.Message);
+            }
+            finally
+            {
+                workbook.Close();
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
         }
 
     }

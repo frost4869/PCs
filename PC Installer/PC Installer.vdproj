@@ -16,7 +16,7 @@
         "Entry"
         {
         "MsmKey" = "8:_16E63F2F44377D1C949AF24054ADE227"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,7 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2ABF6B8C1998491D3D5F73E0CF8F22F4"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,31 +58,31 @@
         "Entry"
         {
         "MsmKey" = "8:_57816907867006056143ABF731904F65"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_64F8731B7B1E7D3CF684656EDC2956E7"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_775CE95FCDDC7F3CBE0FA6A3F78AFFA9"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7C1EB398A9F777DA2DD3ECFC4D61D3C9"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_84C10E74E8FB67D3EAABE61DF53F0C50"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,25 +94,19 @@
         "Entry"
         {
         "MsmKey" = "8:_90A73CE35712A63BA7DC03BDE5D834B6"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A84A15A778F56F6B16E5010596FD2DC0"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B54E62EE096E6616FC5C432E1205A844"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,13 +118,13 @@
         "Entry"
         {
         "MsmKey" = "8:_B97CBB1EF18A2176406BC05ED54AE59E"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E4F2BE0C3D7D49209BE2418EDEED8D31"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,13 +136,13 @@
         "Entry"
         {
         "MsmKey" = "8:_EB18B44830B6EEEECA3060FD6A2F67B9"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FDA3A114609FF962A455D9C5C9F3E42D"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,7 +154,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+        "OwnerKey" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -841,7 +841,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PC Installer"
         "ProductCode" = "8:{B58A740B-5DE1-435A-AA80-60A4D5CAC39D}"
-        "PackageCode" = "8:{7BFA01B7-9112-4029-83C1-8F8DEE9ACAA4}"
+        "PackageCode" = "8:{646818E4-30F5-40BF-ACF1-4ACB8D480671}"
         "UpgradeCode" = "8:{CE342A8F-ECD5-4D1C-A4BF-17D3F084B4FB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -961,7 +961,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_42BE06819C444553BF7FF0901E55EF1E"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A325FAEF77EB46448CA54F435C191793"
             {
             "Name" = "8:Pc Manager"
             "Arguments" = "8:"
@@ -969,13 +969,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+            "Target" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
             "Folder" = "8:_2090D874B9A64A8D87342B698784913A"
             "WorkingFolder" = "8:_62F2F00A09B14971A18E15F04F116EDA"
             "Icon" = "8:_55B23B754416463FB7BA405460C23A89"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_87B7954461204E6A9FB8AD8DB677D5ED"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DD9506E4957442A08169AD2FFE6827C1"
             {
             "Name" = "8:Pc Manager"
             "Arguments" = "8:"
@@ -983,7 +983,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_B01E411E25164DFD9E08CDD61C355A34"
+            "Target" = "8:_402ABE0D31A040E78938AB98ECCBC3BA"
             "Folder" = "8:_441C9B99F4904C7AB277DDBFC7359AFB"
             "WorkingFolder" = "8:_62F2F00A09B14971A18E15F04F116EDA"
             "Icon" = "8:_55B23B754416463FB7BA405460C23A89"
@@ -1388,7 +1388,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B01E411E25164DFD9E08CDD61C355A34"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_402ABE0D31A040E78938AB98ECCBC3BA"
             {
             "SourcePath" = "8:..\\PC\\obj\\Debug\\PC.exe"
             "TargetName" = "8:"
