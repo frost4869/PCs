@@ -20,7 +20,7 @@ namespace PC.Utils
             {
                 try
                 {
-                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputValue.ToLower())))
+                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputValue.ToLower()) && q.Active == true))
                     {
                         return new ValidationResult(false, "Pc Name is already existed !");
                     } 

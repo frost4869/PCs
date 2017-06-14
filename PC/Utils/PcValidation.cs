@@ -51,7 +51,7 @@ namespace PC.Utils
                         check.ValidateMessage += "PC Name must not be empty.\n";
                         check.IsValidated = false;
                     }
-                    if (db.Pcs.Any(q => (q.PC_Name.ToLower().Equals(model.PC_Name.ToLower()) && q.ID != model.ID))){
+                    if (db.Pcs.Any(q => (q.PC_Name.ToLower().Equals(model.PC_Name.ToLower()) && q.ID != model.ID && q.Active == true))){
                         check.ValidateMessage += "PC Name is already existed.\n";
                         check.IsValidated = false;
                     }
