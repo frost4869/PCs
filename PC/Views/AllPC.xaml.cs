@@ -134,6 +134,7 @@ namespace PC.Views
                     BtnUpdate.Visibility = Visibility.Hidden;
                     pcDataGrid.IsReadOnly = true;
 
+                    changesCounts = 0;
                     LoadDataSource();
                 }
                 else if (result == MessageDialogResult.FirstAuxiliary)
@@ -146,8 +147,10 @@ namespace PC.Views
                     BtnUpdate.Visibility = Visibility.Hidden;
                     pcDataGrid.IsReadOnly = true;
 
+                    changesCounts = 0;
                     LoadDataSource();
                 }
+
             }
             else
             {

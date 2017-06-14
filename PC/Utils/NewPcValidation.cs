@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -13,16 +14,16 @@ namespace PC.Utils
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var inputPcName = Convert.ToString(value);
+            var inputValue = Convert.ToString(value);
 
             using (var db = new PCEntities())
             {
                 try
                 {
-                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputPcName.ToLower())))
+                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputValue.ToLower())))
                     {
                         return new ValidationResult(false, "Pc Name is already existed !");
-                    }
+                    } 
                     else
                     {
                         return ValidationResult.ValidResult;

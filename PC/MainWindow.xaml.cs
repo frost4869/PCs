@@ -30,7 +30,7 @@ namespace PC
         {
             ShowDialogsOverTitleBar = false;
             ShowCloseButton = true;
-            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true});
+            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true });
             if (result != null)
             {
                 using (var db = new PCEntities())

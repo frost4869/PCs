@@ -36,13 +36,6 @@ namespace PC.Views
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
         }
 
         private async void BtnSaveClickAsync(object sender, RoutedEventArgs e)
@@ -85,56 +78,65 @@ namespace PC.Views
             var check = new Validation();
             if (pc != null)
             {
-                if (!String.IsNullOrEmpty(pc.PC_Name) && !String.IsNullOrEmpty(pc.Type) && !String.IsNullOrEmpty(pc.OS) && !String.IsNullOrEmpty(pc.PB) && !String.IsNullOrEmpty(pc.Office_Located) && (!String.IsNullOrEmpty(pc.MAC) || !String.IsNullOrEmpty(pc.MAC2)))
+                using (var db = new PCEntities())
                 {
-                    var addMacReg1 = "^[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}$";
-                    var addMacReg2 = "^[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}$";
-
-                    var regex1 = new Regex(addMacReg1);
-                    var regex2 = new Regex(addMacReg2);
-
-                    if(!String.IsNullOrEmpty(pc.MAC) && !String.IsNullOrEmpty(pc.MAC2))
+                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(pc.PC_Name.ToLower())))
                     {
-                        if ((regex1.IsMatch(pc.MAC) || regex2.IsMatch(pc.MAC)) && (regex1.IsMatch(pc.MAC2) || regex2.IsMatch(pc.MAC2)))
+                        check.ValidateMessage = "Pc already existed";
+                        return check;
+                    }
+
+                    if (!String.IsNullOrEmpty(pc.PC_Name) && !String.IsNullOrEmpty(pc.Type) && !String.IsNullOrEmpty(pc.OS) && !String.IsNullOrEmpty(pc.PB) && !String.IsNullOrEmpty(pc.Office_Located) && (!String.IsNullOrEmpty(pc.MAC) || !String.IsNullOrEmpty(pc.MAC2)))
+                    {
+                        var addMacReg1 = "^[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}$";
+                        var addMacReg2 = "^[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}$";
+
+                        var regex1 = new Regex(addMacReg1);
+                        var regex2 = new Regex(addMacReg2);
+
+                        if (!String.IsNullOrEmpty(pc.MAC) && !String.IsNullOrEmpty(pc.MAC2))
                         {
-                            check.IsValidated = true;
+                            if ((regex1.IsMatch(pc.MAC) || regex2.IsMatch(pc.MAC)) && (regex1.IsMatch(pc.MAC2) || regex2.IsMatch(pc.MAC2)))
+                            {
+                                check.IsValidated = true;
+                            }
+                            else
+                            {
+                                check.ValidateMessage = "MAC or MAC2 format is NOT a valid mac address format (##:##:##:##:##:##)\n";
+                            }
                         }
                         else
                         {
-                            check.ValidateMessage = "MAC or MAC2 format is NOT a valid mac address format (##:##:##:##:##:##)\n";
+                            if (!String.IsNullOrEmpty(pc.MAC))
+                            {
+                                if (regex1.IsMatch(pc.MAC) || regex2.IsMatch(pc.MAC))
+                                {
+                                    check.IsValidated = true;
+                                }
+                                else
+                                {
+                                    check.ValidateMessage = "MAC format is NOT a valid mac address format (##:##:##:##:##:##)\n";
+                                }
+                            }
+
+
+                            if (!String.IsNullOrEmpty(pc.MAC2))
+                            {
+                                if (regex1.IsMatch(pc.MAC2) || regex2.IsMatch(pc.MAC2))
+                                {
+                                    check.IsValidated = true;
+                                }
+                                else
+                                {
+                                    check.ValidateMessage += "MAC2 format is NOT a valid mac address format (##:##:##:##:##:##)\n";
+                                }
+                            }
                         }
                     }
                     else
                     {
-                        if (!String.IsNullOrEmpty(pc.MAC))
-                        {
-                            if (regex1.IsMatch(pc.MAC) || regex2.IsMatch(pc.MAC))
-                            {
-                                check.IsValidated = true;
-                            }
-                            else
-                            {
-                                check.ValidateMessage = "MAC format is NOT a valid mac address format (##:##:##:##:##:##)\n";
-                            }
-                        }
-
-
-                        if (!String.IsNullOrEmpty(pc.MAC2))
-                        {
-                            if (regex1.IsMatch(pc.MAC2) || regex2.IsMatch(pc.MAC2))
-                            {
-                                check.IsValidated = true;
-                            }
-                            else
-                            {
-                                check.ValidateMessage += "MAC2 format is NOT a valid mac address format (##:##:##:##:##:##)\n";
-                            }
-                        }
+                        check.ValidateMessage += "Fields with [ * ] mark must not be empty\n";
                     }
-                }
-                else
-                {
-                    check.ValidateMessage += "Fields with [ * ] mark must not be empty\n";
                 }
             }
 

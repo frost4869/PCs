@@ -91,9 +91,41 @@
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="IP:"/>
             <TextBox x:Name="iPTextBox" Width="300" VerticalAlignment="Center" Text="{Binding IP, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* MAC:"/>
-            <TextBox x:Name="mACTextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="mACTextBox" Width="300" VerticalAlignment="Center" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Style="{StaticResource textBoxInError}">
+
+                <TextBox.Text>
+                    <Binding Path="MAC"
+                             Mode="TwoWay"
+                             NotifyOnValidationError="True"
+                             ValidatesOnExceptions="True"
+                             ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <validations:InputMacValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+
+            </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="MAC 2:"/>
-            <TextBox x:Name="mAC2TextBox" Width="300" VerticalAlignment="Center" Text="{Binding MAC2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="mAC2TextBox" Width="300" VerticalAlignment="Center" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Style="{StaticResource textBoxInError}">
+
+                <TextBox.Text>
+                    <Binding Path="MAC2"
+                             Mode="TwoWay"
+                             NotifyOnValidationError="True"
+                             ValidatesOnExceptions="True"
+                             ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <validations:InputMacValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+
+            </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Office Located:"/>
             <TextBox x:Name="office_LocatedTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Office_Located, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
