@@ -55,3 +55,5 @@ E:\Projects\PC\PC\obj\Debug\PC.csproj.GenerateResource.Cache
 E:\Projects\PC\PC\obj\Debug\PC.exe
 E:\Projects\PC\PC\obj\Debug\PC.pdb
 E:\Projects\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
+E:\Projects\PC\PC\obj\Debug\Views\ImportExcel.g.cs
+E:\Projects\PC\PC\obj\Debug\Views\ImportExcel.baml

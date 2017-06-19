@@ -143,6 +143,9 @@
     <Compile Include="Views\FilteriItem.xaml.cs">
       <DependentUpon>FilteriItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImportExcel.xaml.cs">
+      <DependentUpon>ImportExcel.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FilteriItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImportExcel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

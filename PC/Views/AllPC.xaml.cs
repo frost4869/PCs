@@ -3,30 +3,16 @@ using AutoMapper.QueryableExtensions;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using PC.DataAccess;
-using PC.DataAccess.Repository;
 using PC.Utils;
 using PC.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Globalization;
 using System.Data;
-using System.ComponentModel;
 using Microsoft.Win32;
 
 namespace PC.Views
@@ -213,21 +199,18 @@ namespace PC.Views
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
-
             var list = pcViewSource.AsQueryable().ProjectTo<Pc>(config).ToList();
             var dataTable = Util.ToDataTable<Pc>(list);
             ExportExcelAsync(dataTable);
-
         }
-
 
         private async void ExportExcelAsync(DataTable dt)
         {
             var metroWindow = (Application.Current.MainWindow as MetroWindow);
             var controller = await metroWindow.ShowProgressAsync("Export Excel", "Please wait...");
             controller.SetIndeterminate();
-            await Task.Delay(1000);
 
+            
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             excel.DisplayAlerts = false;
             excel.Visible = false;
@@ -238,30 +221,34 @@ namespace PC.Views
             Microsoft.Office.Interop.Excel.Range cellRange;
             try
             {
-                var tempDT = dt;
-
-                var rowCount = 1;
-                Microsoft.Office.Interop.Excel.Range rng = worksheet.Cells[1, 1] as Microsoft.Office.Interop.Excel.Range;
-                rng.EntireRow.Font.Bold = true;
-
-                for (int i = 1; i < tempDT.Columns.Count - 1; i++)
+                await Task.Run(() =>
                 {
-                    worksheet.Cells[1, i] = tempDT.Columns[i].ColumnName;
-                }
+                    var tempDT = dt;
 
-                foreach (DataRow row in tempDT.Rows)
-                {
-                    rowCount += 1;
-                    for (int i = 1; i < tempDT.Columns.Count - 1; i++) //taking care of each column  
+                    var rowCount = 1;
+                    Microsoft.Office.Interop.Excel.Range rng = worksheet.Cells[1, 1] as Microsoft.Office.Interop.Excel.Range;
+                    rng.EntireRow.Font.Bold = true;
+
+                    for (int i = 1; i < tempDT.Columns.Count - 1; i++)
                     {
-                        worksheet.Cells[rowCount, i] = row[i].ToString();
+                        worksheet.Cells[1, i] = tempDT.Columns[i].ColumnName;
                     }
-                }
 
-                cellRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[rowCount, tempDT.Columns.Count]];
-                cellRange.EntireColumn.AutoFit();
+                    foreach (DataRow row in tempDT.Rows)
+                    {
+                        rowCount += 1;
+                        for (int i = 1; i < tempDT.Columns.Count - 1; i++) //taking care of each column  
+                        {
+                            worksheet.Cells[rowCount, i] = row[i].ToString();
+                        }
+                    }
 
-                await controller.CloseAsync();
+                    cellRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[rowCount, tempDT.Columns.Count]];
+                    cellRange.EntireColumn.AutoFit();
+
+
+                    
+                });
 
                 //Getting the location and file name of the excel to save from user.
                 SaveFileDialog saveDialog = new SaveFileDialog();
@@ -281,6 +268,8 @@ namespace PC.Views
             }
             finally
             {
+                await controller.CloseAsync();
+
                 workbook.Close();
                 excel.Quit();
                 workbook = null;
@@ -288,5 +277,7 @@ namespace PC.Views
             }
         }
 
+       
     }
+
 }
