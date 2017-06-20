@@ -246,8 +246,6 @@ namespace PC.Views
                     cellRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[rowCount, tempDT.Columns.Count]];
                     cellRange.EntireColumn.AutoFit();
 
-
-                    
                 });
 
                 //Getting the location and file name of the excel to save from user.
@@ -258,7 +256,8 @@ namespace PC.Views
                 if (saveDialog.ShowDialog() == true)
                 {
                     workbook.SaveAs(saveDialog.FileName);
-                    await ShowMessageBoxAsync("Message", "Exported Successfully at " + workbook.Path);
+                    await controller.CloseAsync();
+                    await ShowMessageBoxAsync("Message", "Exported Successfully at: " + saveDialog.FileName);
                 }
             }
             catch (Exception ex)
@@ -268,16 +267,12 @@ namespace PC.Views
             }
             finally
             {
-                await controller.CloseAsync();
-
                 workbook.Close();
                 excel.Quit();
                 workbook = null;
                 excel = null;
             }
         }
-
-       
     }
 
 }

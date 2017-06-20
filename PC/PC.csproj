@@ -124,10 +124,13 @@
     </Compile>
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\Enum.cs" />
+    <Compile Include="Utils\ExcelImportValidation.cs" />
     <Compile Include="Utils\InputMacValidation.cs" />
+    <Compile Include="Utils\MyDataGrid.cs" />
     <Compile Include="Utils\NewPcValidation.cs" />
     <Compile Include="Utils\PcValidation.cs" />
     <Compile Include="Utils\Util.cs" />
+    <Compile Include="Utils\Validation.cs" />
     <Compile Include="ViewModels\FilterModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PcViewModel.cs" />

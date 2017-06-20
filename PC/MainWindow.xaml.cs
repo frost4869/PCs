@@ -75,7 +75,7 @@ namespace PC
             if (openDialog.ShowDialog() == true)
             {
                 
-                ImportExcel(openDialog.FileName);
+                ImportExcel(openDialog.FileName, openDialog.SafeFileName);
             }
         }
 
@@ -100,13 +100,13 @@ namespace PC
             item.Focus();
         }
 
-        private async void ImportExcel(string filename)
+        private async void ImportExcel(string filePath, string fileName)
         {
             var controller = await this.ShowProgressAsync("Importing", "Please wait...");
             controller.SetIndeterminate();
 
             Microsoft.Office.Interop.Excel.Application application = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook workbook = application.Workbooks.Open(filename);
+            Microsoft.Office.Interop.Excel.Workbook workbook = application.Workbooks.Open(filePath);
             Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Sheets[1];
             Microsoft.Office.Interop.Excel.Range range = worksheet.UsedRange;
 
@@ -171,7 +171,7 @@ namespace PC
 
             MetroTabItem item = new MetroTabItem
             {
-                Header = "Import Form Excel",
+                Header = fileName,
                 CloseButtonEnabled = true,
             };
             ImportExcel view = new Views.ImportExcel(pcList);
