@@ -187,7 +187,7 @@ namespace PC
 
         private void BtnCheckUpdateClicked(object sender, RoutedEventArgs e)
         {
-
+            AutoUpdater.Start("");
         }
     }
 }

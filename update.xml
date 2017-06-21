@@ -1,10 +1,10 @@
 <item>
 	<version>6.21.17</version>
 	<url>
-		http://rbsoft.org/phocadownload/AutoUpdaterTestWPF.zip
+		https://drive.google.com/uc?export=download&id=0B_xHtR_JPeKQVkZvY2xLdVA4T3M
 	</url>
 	<changelog>
-		https://github.com/ravibpatel/AutoUpdater.NET/releases
+		https://github.com/frost4869/PCs/releases
 	</changelog>
 	<mandatory>false</mandatory>
 </item>
