@@ -49,9 +49,9 @@
                 Visibility="Hidden"/>
             
         </StackPanel>
-        <Button x:Name="BtnExport" Grid.Row="1" Content="Export to Excel File"
-                    HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="0 5 5 10"
-                    Style="{DynamicResource SquareButtonStyle}" Click="BtnExport_Click"/>
+        <Button x:Name="BtnExport" Grid.Row="0" Content="Export to Excel File"
+                    HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0"
+                    Style="{DynamicResource SquareButtonStyle}" Click="BtnExport_Click" Height="35"/>
         <DataGrid x:Name="pcDataGrid" 
                   Grid.Row="2"
                   ItemsSource="{Binding}" 
@@ -83,6 +83,14 @@
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox x:Name="headerCheckBox" Checked="headerCheckBox_Checked" Unchecked="headerCheckBox_Unchecked"/>
+                    </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="0" />

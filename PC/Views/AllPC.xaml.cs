@@ -259,6 +259,10 @@ namespace PC.Views
                     await controller.CloseAsync();
                     await ShowMessageBoxAsync("Message", "Exported Successfully at: " + saveDialog.FileName);
                 }
+                else
+                {
+                    await controller.CloseAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -271,6 +275,22 @@ namespace PC.Views
                 excel.Quit();
                 workbook = null;
                 excel = null;
+            }
+        }
+
+        private void headerCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in pcViewSource)
+            {
+                item.IsSelected = true;
+            }
+        }
+
+        private void headerCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in pcViewSource)
+            {
+                item.IsSelected = false;
             }
         }
     }

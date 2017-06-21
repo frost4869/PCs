@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using AutoUpdaterDotNET;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using PC.DataAccess;
@@ -182,6 +183,11 @@ namespace PC
 
             MainTabControl.Items.Add(item);
             item.Focus();
+        }
+
+        private void BtnCheckUpdateClicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -47,6 +47,9 @@
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox x:Name="headerCheckBox" Checked="headerCheckBox_Checked" Unchecked="headerCheckBox_Unchecked"/>
+                    </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="0" />

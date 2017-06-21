@@ -36,6 +36,9 @@
                       ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" Click="BtnFilterClick"/>
             <MenuItem Header="Import"
                       ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" Click="BtnImportClicked"/>
+            <MenuItem Header="Check for updates"
+                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"
+                      Click="BtnCreateClick"/>
         </Menu>
         <Controls:MetroAnimatedSingleRowTabControl 
             TabItemClosingEvent="MainTabControl_TabItemClosingEvent" 

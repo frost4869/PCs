@@ -123,5 +123,21 @@ namespace PC.Views
             }
 
         }
+
+        private void headerCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in pcViewModelList)
+            {
+                item.IsSelected = true;
+            }
+        }
+
+        private void headerCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in pcViewModelList)
+            {
+                item.IsSelected = false;
+            }
+        }
     }
 }

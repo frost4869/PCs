@@ -57,3 +57,6 @@ E:\Projects\PC\PC\obj\Debug\PC.pdb
 E:\Projects\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
 E:\Projects\PC\PC\obj\Debug\Views\ImportExcel.g.cs
 E:\Projects\PC\PC\obj\Debug\Views\ImportExcel.baml
+E:\Projects\PC\PC\bin\Debug\RedCell.Diagnostics.Update.dll
+E:\Projects\PC\PC\bin\Debug\RedCell.Net.dll
+E:\Projects\PC\PC\bin\Debug\Ionic.Zip.Reduced.dll
