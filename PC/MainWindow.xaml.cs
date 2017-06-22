@@ -7,8 +7,11 @@ using PC.ViewModels;
 using PC.Views;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 
 namespace PC
@@ -24,11 +27,25 @@ namespace PC
         {
             InitializeComponent();
             DataContext = viewModel;
+
+            Assembly assembly = Assembly.GetEntryAssembly();
+            this.Title = "Quản lý PC - v" + assembly.GetName().Version;
+
+            AutoUpdater.CurrentCulture = new CultureInfo("en-EN");
+            AutoUpdater.LetUserSelectRemindLater = true;
+            AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Minutes;
+            AutoUpdater.RemindLaterAt = 1;
+            AutoUpdater.ReportErrors = true;
+            System.Timers.Timer timer = new System.Timers.Timer { Interval = 2 * 60 * 1000 };
+            timer.Elapsed += delegate (object sender, ElapsedEventArgs args)
+            {
+                AutoUpdater.Start("https://raw.githubusercontent.com/frost4869/uploadfiles/master/update.xml");
+            };
+            timer.Start();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "Quản lý PC";
             await AuthorizeAsync("Enter Username and Password.");
         }
 
@@ -187,7 +204,7 @@ namespace PC
 
         private void BtnCheckUpdateClicked(object sender, RoutedEventArgs e)
         {
-            AutoUpdater.Start("");
+            AutoUpdater.Start("https://raw.githubusercontent.com/frost4869/uploadfiles/master/update.xml");
         }
     }
 }
