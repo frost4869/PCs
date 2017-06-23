@@ -12,13 +12,14 @@
     <Property Name="RAM" Type="nvarchar" MaxLength="50" />
     <Property Name="OS" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IP" Type="nvarchar" MaxLength="50" />
-    <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAC" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MAC2" Type="nvarchar" MaxLength="50" />
     <Property Name="NV" Type="nvarchar" MaxLength="100" />
     <Property Name="NVCode" Type="nvarchar" MaxLength="50" />
     <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar(max)" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="User">

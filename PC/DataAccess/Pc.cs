@@ -29,6 +29,7 @@ namespace PC.DataAccess
         public string PB { get; set; }
         public string Office_Located { get; set; }
         public string ServiceTag { get; set; }
+        public string Notes { get; set; }
         public bool Active { get; set; }
     }
 }

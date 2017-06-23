@@ -70,6 +70,7 @@
                 <DataGridTextColumn x:Name="rAMColumn" Width="*" Header="RAM" Binding="{Binding RAM, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="typeColumn" Width="*" Header="Type" Binding="{Binding Type, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="serviceTagColumn" Width="*" Header="Service Tag" Binding="{Binding ServiceTag, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="notesColumn" Width="*" Header="Notes" Binding="{Binding Notes, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
 
             <DataGrid.RowValidationRules>

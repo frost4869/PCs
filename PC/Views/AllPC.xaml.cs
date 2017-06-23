@@ -245,7 +245,8 @@ namespace PC.Views
 
                     cellRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[rowCount, tempDT.Columns.Count]];
                     cellRange.EntireColumn.AutoFit();
-
+                    cellRange.EntireRow.AutoFit();
+                    cellRange.EntireRow.VerticalAlignment = Microsoft.Office.Interop.Excel.XlTopBottom.xlTop10Top;
                 });
 
                 //Getting the location and file name of the excel to save from user.

@@ -17,13 +17,14 @@
           <Property Name="RAM" Type="nvarchar" MaxLength="50" />
           <Property Name="OS" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IP" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAC" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MAC2" Type="nvarchar" MaxLength="50" />
           <Property Name="NV" Type="nvarchar" MaxLength="100" />
           <Property Name="NVCode" Type="nvarchar" MaxLength="50" />
           <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar(max)" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
@@ -64,13 +65,14 @@
           <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NVCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
@@ -91,6 +93,7 @@
             <EntityTypeMapping TypeName="PCModel.Pc">
               <MappingFragment StoreEntitySet="Pc">
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
                 <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
                 <ScalarProperty Name="PB" ColumnName="PB" />

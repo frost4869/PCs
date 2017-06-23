@@ -23,13 +23,14 @@
     <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MAC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NVCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

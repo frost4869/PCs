@@ -36,7 +36,7 @@ namespace PC
             AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Minutes;
             AutoUpdater.RemindLaterAt = 1;
             AutoUpdater.ReportErrors = true;
-            System.Timers.Timer timer = new System.Timers.Timer { Interval = 2 * 60 * 1000 };
+            System.Timers.Timer timer = new System.Timers.Timer { Interval = 24 * 60 * 60 * 1000 };
             timer.Elapsed += delegate (object sender, ElapsedEventArgs args)
             {
                 AutoUpdater.Start("https://raw.githubusercontent.com/frost4869/uploadfiles/master/update.xml");
@@ -165,6 +165,7 @@ namespace PC
                         PB = listResultString[11] == "" ? null : listResultString[11],
                         Office_Located = listResultString[12] == "" ? null : listResultString[12],
                         ServiceTag = listResultString[13] == "" ? null : listResultString[13],
+                        Notes = listResultString[14] == "" ? null : listResultString[14],
                     });
                 }
 

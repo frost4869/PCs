@@ -80,7 +80,7 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-                
+
             </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nhân Viên:"/>
             <TextBox x:Name="nVTextBox" Width="300" VerticalAlignment="Center" Text="{Binding NV, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -141,6 +141,8 @@
             <TextBox x:Name="typeTextBox" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Service Tag:"/>
             <TextBox x:Name="serviceTagTextBox" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Notes:"/>
+            <TextBox x:Name="notesTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalAlignment="Center" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,7,0,7" Height="66" HorizontalAlignment="Left" Grid.Column="3" Grid.RowSpan="2"/>
             <Button x:Name="btnSave" Content="save" Grid.Row="8" Grid.Column="3" Width="100"   HorizontalContentAlignment="Center" Click="BtnSaveClickAsync" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 100 0"
                     Style="{StaticResource buttonInError}" Height="30" FontSize="16" FontWeight="Bold"/>
         </Grid>

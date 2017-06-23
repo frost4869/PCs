@@ -13,6 +13,7 @@
       <EntityTypeMapping TypeName="PCModel.Pc">
         <MappingFragment StoreEntitySet="Pc">
           <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
           <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
           <ScalarProperty Name="PB" ColumnName="PB" />
