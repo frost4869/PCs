@@ -88,10 +88,10 @@ namespace PC.Views
                             PcList = PcList.Where(q => q.PC_Name.ToLower().Contains(query));
                             break;
                         case Filters.PB:
-                            PcList = PcList.Where(q => q.PB.ToLower().Equals(query));
+                            PcList = PcList.Where(q => q.PB.ToLower().Contains(query));
                             break;
                         case Filters.NV:
-                            PcList = PcList.Where(q => q.NV.ToLower().Equals(query));
+                            PcList = PcList.Where(q => q.NV.ToLower().Contains(query));
                             break;
                         case Filters.MAC:
                             PcList = PcList.Where(q => q.MAC.Equals(query));
@@ -101,6 +101,9 @@ namespace PC.Views
                             break;
                         case Filters.IP:
                             PcList = PcList.Where(q => q.IP.Equals(query));
+                            break;
+                        case Filters.Location:
+                            PcList = PcList.Where(q => q.Office_Located.ToLower().Contains(query));
                             break;
                         default:
                             break;

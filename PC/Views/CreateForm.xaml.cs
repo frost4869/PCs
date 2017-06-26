@@ -86,7 +86,7 @@ namespace PC.Views
                         return check;
                     }
 
-                    if (!String.IsNullOrEmpty(pc.PC_Name) && !String.IsNullOrEmpty(pc.Type) && !String.IsNullOrEmpty(pc.OS) && !String.IsNullOrEmpty(pc.PB) && !String.IsNullOrEmpty(pc.Office_Located) && (!String.IsNullOrEmpty(pc.MAC) || !String.IsNullOrEmpty(pc.MAC2)))
+                    if (!String.IsNullOrEmpty(pc.PC_Name) && !String.IsNullOrEmpty(pc.Type) && !String.IsNullOrEmpty(pc.PB) && !String.IsNullOrEmpty(pc.Office_Located) && (!String.IsNullOrEmpty(pc.MAC) || !String.IsNullOrEmpty(pc.MAC2)))
                     {
                         var addMacReg1 = "^[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}$";
                         var addMacReg2 = "^[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}$";

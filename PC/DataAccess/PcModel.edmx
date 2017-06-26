@@ -15,7 +15,7 @@
           <Property Name="HDD" Type="nvarchar" MaxLength="50" />
           <Property Name="CPU" Type="nvarchar" MaxLength="100" />
           <Property Name="RAM" Type="nvarchar" MaxLength="50" />
-          <Property Name="OS" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OS" Type="nvarchar" MaxLength="50" />
           <Property Name="IP" Type="nvarchar" MaxLength="50" />
           <Property Name="MAC" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MAC2" Type="nvarchar" MaxLength="50" />
@@ -63,7 +63,7 @@
           <Property Name="HDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MAC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

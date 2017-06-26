@@ -58,11 +58,6 @@ namespace PC.Utils
                         check.ValidateMessage += "Type must not be empty.\n";
                         check.IsValidated = false;
                     }
-                    if (String.IsNullOrEmpty(model.OS))
-                    {
-                        check.IsValidated = false;
-                        check.ValidateMessage += "OS must not be empty.\n";
-                    }
                     if (String.IsNullOrEmpty(model.PB))
                     {
                         check.IsValidated = false;

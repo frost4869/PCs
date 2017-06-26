@@ -133,7 +133,7 @@
             <TextBox x:Name="cPUTextBox" Width="300" VerticalAlignment="Center" Text="{Binding CPU, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="HDD:"/>
             <TextBox x:Name="hDDTextBox" Width="300" VerticalAlignment="Center" Text="{Binding HDD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="* OS:"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="OS:"/>
             <TextBox x:Name="oSTextBox" Width="300" VerticalAlignment="Center" Text="{Binding OS, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="RAM:"/>
             <TextBox x:Name="rAMTextBox" Width="300" VerticalAlignment="Center" Text="{Binding RAM, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>

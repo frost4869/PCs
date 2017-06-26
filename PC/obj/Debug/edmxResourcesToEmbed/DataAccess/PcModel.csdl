@@ -21,7 +21,7 @@
     <Property Name="HDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MAC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

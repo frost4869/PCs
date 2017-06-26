@@ -13,6 +13,7 @@ namespace PC.Utils
         NV,
         MAC,
         MAC2,
-        IP
+        IP,
+        Location
     }
 }
