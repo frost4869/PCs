@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PC.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -21,12 +22,16 @@ namespace PC.Utils
             var regex1 = new Regex(addMacReg1);
             var regex2 = new Regex(addMacReg2);
 
-            if (!regex1.IsMatch(inputMac) && !regex2.IsMatch(inputMac))
+            using (var db = new PCEntities())
             {
-                return new ValidationResult(false, "Mac Address format is not valid");
-            }
-            else
-            {
+                if (!regex1.IsMatch(inputMac) && !regex2.IsMatch(inputMac))
+                {
+                    return new ValidationResult(false, "Mac Address format is not valid");
+                }
+                if (db.Pcs.Any(q => q.MAC.ToLower().Equals(inputMac.ToLower()) && q.Active == true))
+                {
+                    return new ValidationResult(false, "Mac Address already existed !");
+                }
                 return ValidationResult.ValidResult;
             }
         }

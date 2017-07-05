@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -78,6 +79,9 @@ namespace PC.Views
 
         private IEnumerable<Pc> LoadDataSource(IEnumerable<Pc> PcList, Filters? option, string query)
         {
+            
+            query = Util.RejectMarks(query);
+
             using (var db = new PCEntities())
             {
                 if (option != null)
@@ -85,25 +89,27 @@ namespace PC.Views
                     switch (option.Value)
                     {
                         case Filters.Pc_Name:
-                            PcList = PcList.Where(q => q.PC_Name.ToLower().Contains(query));
+                            PcList = PcList.Where(q => Util.RejectMarks(q.PC_Name).Contains(query) && q.Active == true);
                             break;
                         case Filters.PB:
-                            PcList = PcList.Where(q => q.PB.ToLower().Contains(query));
+                            PcList = PcList.Where(q => Util.RejectMarks(q.PB).Contains(query) && q.Active == true);
                             break;
                         case Filters.NV:
-                            PcList = PcList.Where(q => q.NV.ToLower().Contains(query));
+                            PcList = PcList.Where(q => Util.RejectMarks(q.NV).Contains(query) && 
+                                            q.Active == true);
                             break;
                         case Filters.MAC:
-                            PcList = PcList.Where(q => q.MAC.Equals(query));
+                            PcList = PcList.Where(q => q.MAC.Equals(query) && q.Active == true);
                             break;
                         case Filters.MAC2:
-                            PcList = PcList.Where(q => q.MAC2.Equals(query));
+                            PcList = PcList.Where(q => q.MAC2.Equals(query) && q.Active == true);
                             break;
                         case Filters.IP:
-                            PcList = PcList.Where(q => q.IP.Equals(query));
+                            PcList = PcList.Where(q => q.IP.Equals(query) && q.Active == true);
                             break;
                         case Filters.Location:
-                            PcList = PcList.Where(q => q.Office_Located.ToLower().Contains(query));
+                            PcList = PcList.Where(q => Util.RejectMarks(q.Office_Located).Contains(query) && 
+                                            q.Active == true);
                             break;
                         default:
                             break;

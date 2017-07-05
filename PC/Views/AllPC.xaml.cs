@@ -98,12 +98,6 @@ namespace PC.Views
             return result;
         }
 
-        private async Task ShowMessageBoxAsync(string title, string mess)
-        {
-            var metroWindow = (Application.Current.MainWindow as MetroWindow);
-            await metroWindow.ShowMessageAsync(title, mess);
-        }
-
         private void BtnEditChecked(object sender, RoutedEventArgs e)
         {
             BtnDelete.Visibility = Visibility.Visible;
@@ -191,7 +185,8 @@ namespace PC.Views
             }
             catch (Exception ex)
             {
-                await ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
+                await Util.ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
+                Util.WriteLog(ex.Message);
             }
 
             changesCounts = 0;
@@ -201,6 +196,7 @@ namespace PC.Views
         {
             var list = pcViewSource.AsQueryable().ProjectTo<Pc>(config).ToList();
             var dataTable = Util.ToDataTable<Pc>(list);
+
             ExportExcelAsync(dataTable);
         }
 
@@ -210,7 +206,6 @@ namespace PC.Views
             var controller = await metroWindow.ShowProgressAsync("Export Excel", "Please wait...");
             controller.SetIndeterminate();
 
-            
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             excel.DisplayAlerts = false;
             excel.Visible = false;
@@ -258,7 +253,7 @@ namespace PC.Views
                 {
                     workbook.SaveAs(saveDialog.FileName);
                     await controller.CloseAsync();
-                    await ShowMessageBoxAsync("Message", "Exported Successfully at: " + saveDialog.FileName);
+                    await Util.ShowMessageBoxAsync("Message", "Exported Successfully at: " + saveDialog.FileName);
                 }
                 else
                 {
@@ -268,7 +263,8 @@ namespace PC.Views
             catch (Exception ex)
             {
                 await controller.CloseAsync();
-                await ShowMessageBoxAsync("Error", ex.Message);
+                await Util.ShowMessageBoxAsync("Error", ex.Message);
+                Util.WriteLog(ex.Message);
             }
             finally
             {

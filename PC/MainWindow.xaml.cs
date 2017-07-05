@@ -36,39 +36,6 @@ namespace PC
             AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Minutes;
             AutoUpdater.RemindLaterAt = 1;
             AutoUpdater.ReportErrors = true;
-            System.Timers.Timer timer = new System.Timers.Timer { Interval = 24 * 60 * 60 * 1000 };
-            timer.Elapsed += delegate (object sender, ElapsedEventArgs args)
-            {
-                AutoUpdater.Start("https://raw.githubusercontent.com/frost4869/uploadfiles/master/update.xml");
-            };
-            timer.Start();
-        }
-
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            await AuthorizeAsync("Enter Username and Password.");
-        }
-
-        private async Task AuthorizeAsync(string message)
-        {
-            ShowDialogsOverTitleBar = false;
-            ShowCloseButton = true;
-            LoginDialogData result = await this.ShowLoginAsync("Login", message, new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, EnablePasswordPreview = true });
-            if (result != null)
-            {
-                using (var db = new PCEntities())
-                {
-                    var user = await db.Users.FindAsync(result.Username);
-                    if (user != null)
-                    {
-                        MainWindowContent.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        await AuthorizeAsync("Wrong Username or Password, try again.");
-                    }
-                }
-            }
         }
 
         private void BtnCreateClick(object sender, RoutedEventArgs e)
@@ -92,7 +59,6 @@ namespace PC
             openDialog.Filter = "Excel Files|*.xlsx*| All files|*.*";
             if (openDialog.ShowDialog() == true)
             {
-                
                 ImportExcel(openDialog.FileName, openDialog.SafeFileName);
             }
         }

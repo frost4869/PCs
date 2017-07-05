@@ -65,6 +65,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -125,11 +126,13 @@
     <Compile Include="DataAccess\User.cs">
       <DependentUpon>PcModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StartupWindow.xaml.cs">
+      <DependentUpon>StartupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\Enum.cs" />
     <Compile Include="Utils\ExcelImportValidation.cs" />
     <Compile Include="Utils\InputMacValidation.cs" />
-    <Compile Include="Utils\MyDataGrid.cs" />
     <Compile Include="Utils\NewPcValidation.cs" />
     <Compile Include="Utils\PcValidation.cs" />
     <Compile Include="Utils\Util.cs" />
@@ -167,6 +170,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StartupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AllPC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

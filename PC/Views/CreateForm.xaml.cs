@@ -60,7 +60,8 @@ namespace PC.Views
                     }
                     catch (Exception ex)
                     {
-
+                        Util.WriteLog(ex.Message);
+                        Util.ShowMessageBoxAsync("Error", ex.Message);
                         throw;
                     }
                 }

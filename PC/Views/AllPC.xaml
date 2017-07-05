@@ -125,10 +125,10 @@
                         Path=(Validation.Errors)[0].ErrorContent}">
                         <Ellipse StrokeThickness="0" Fill="Red"     
                             Width="20" 
-                            Height="20" />
+                            Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="!" FontSize="20" 
                             FontWeight="Bold" Foreground="White" 
-                            HorizontalAlignment="Center"  />
+                            HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                     </Grid>
                 </ControlTemplate>
             </DataGrid.RowValidationErrorTemplate>

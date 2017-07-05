@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PC"
         xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Loaded="Window_Loaded">
+        Title="MainWindow">
     <Window.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
         <Style x:Key="AppThemeMenuItemStyle"
@@ -19,7 +19,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid x:Name="MainWindowContent" Visibility="Hidden">
+    <Grid x:Name="MainWindowContent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -50,6 +50,4 @@
             </Controls:MetroTabItem>
         </Controls:MetroAnimatedSingleRowTabControl>
     </Grid>
-
-
 </Controls:MetroWindow>

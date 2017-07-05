@@ -23,7 +23,7 @@ namespace PC.Utils
                     if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputValue.ToLower()) && q.Active == true))
                     {
                         return new ValidationResult(false, "Pc Name is already existed !");
-                    } 
+                    }
                     else
                     {
                         return ValidationResult.ValidResult;
@@ -31,6 +31,8 @@ namespace PC.Utils
                 }
                 catch (Exception ex)
                 {
+                    Util.WriteLog(ex.Message);
+                    Util.ShowMessageBoxAsync("Error", ex.Message);
                     throw;
                 }
             }

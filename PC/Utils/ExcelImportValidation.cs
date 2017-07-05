@@ -87,6 +87,11 @@ namespace PC.Utils
                             check.ValidateMessage += "MAC format is NOT a valid mac address format (##:##:##:##:##:##)\n";
                         }
                     }
+                    if (db.Pcs.Any(q => q.MAC.ToLower().Equals(model.MAC.ToLower()) && q.ID != model.ID && q.Active == true))
+                    {
+                        check.IsValidated = false;
+                        check.ValidateMessage += "Mac Address already existed !";
+                    }
                     if (!String.IsNullOrEmpty(model.MAC2))
                     {
                         if (!regex1.IsMatch(model.MAC2) && !regex2.IsMatch(model.MAC2))

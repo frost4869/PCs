@@ -70,3 +70,5 @@ E:\Projects\PC\PC\obj\Debug\PC.Properties.Resources.resources
 E:\Projects\PC\PC\obj\Debug\PC.csproj.GenerateResource.Cache
 E:\Projects\PC\PC\obj\Debug\PC.exe
 E:\Projects\PC\PC\obj\Debug\PC.pdb
+E:\Projects\PC\PC\obj\Debug\StartupWindow.g.cs
+E:\Projects\PC\PC\obj\Debug\StartupWindow.baml
