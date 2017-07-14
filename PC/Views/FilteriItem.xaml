@@ -18,12 +18,20 @@
         <ComboBox Grid.Column="0"
                     x:Name="filter_combobox"
                     Margin="5"
-                    SelectedIndex="0">
+                    SelectedIndex="0"
+                    SelectionChanged="filter_combobox_SelectionChanged"
+                    DropDownClosed="filter_combobox_DropDownClosed">
         </ComboBox>
 
         <TextBox Grid.Column="1"
                      Margin="5"
                      x:Name="filter_value"/>
+
+        <ComboBox Visibility="Hidden"
+                Grid.Column="1"
+                Margin="5"
+                x:Name="location_options"
+                SelectedIndex="0"></ComboBox>
 
         <Button Grid.Column="2"
                 Width="25" Height="25"

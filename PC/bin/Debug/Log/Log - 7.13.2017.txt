@@ -1,0 +1,72 @@
+
+Log Entry : 11:16:42 AM
+  :
+  =====>:Data binding directly to a store query (DbSet, DbQuery, DbSqlQuery, DbRawSqlQuery) is not supported. Instead populate a DbSet with data, for example by calling Load on the DbSet, and then bind to local data. For WPF bind to DbSet.Local. For WinForms bind to DbSet.Local.ToBindingList(). For ASP.NET WebForms you can bind to the result of calling ToList() on the query or use Model Binding, for more information see http://go.microsoft.com/fwlink/?LinkId=389592.
+-------------------------------
+
+Log Entry : 2:39:24 PM
+  :
+  =====>:Data binding directly to a store query (DbSet, DbQuery, DbSqlQuery, DbRawSqlQuery) is not supported. Instead populate a DbSet with data, for example by calling Load on the DbSet, and then bind to local data. For WPF bind to DbSet.Local. For WinForms bind to DbSet.Local.ToBindingList(). For ASP.NET WebForms you can bind to the result of calling ToList() on the query or use Model Binding, for more information see http://go.microsoft.com/fwlink/?LinkId=389592.   at System.Data.Entity.Infrastructure.DbQuery`1.System.ComponentModel.IListSource.GetList()
+   at MS.Internal.Data.ViewManager.GetViewRecord(Object collection, CollectionViewSource cvs, Type collectionViewType, Boolean createView, Func`2 GetSourceItem)
+   at MS.Internal.Data.DataBindEngine.GetViewRecord(Object collection, CollectionViewSource key, Type collectionViewType, Boolean createView, Func`2 GetSourceItem)
+   at System.Windows.Data.CollectionViewSource.GetDefaultCollectionView(Object source, Boolean createView, Func`2 GetSourceItem)
+   at System.Windows.Data.CollectionViewSource.GetDefaultCollectionView(Object source, DependencyObject d, Func`2 GetSourceItem)
+   at System.Windows.Controls.ItemCollection.SetItemsSource(IEnumerable value, Func`2 GetSourceItem)
+   at System.Windows.Controls.ItemsControl.OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.NotifyPropertyChange(DependencyPropertyChangedEventArgs args)
+   at System.Windows.DependencyObject.UpdateEffectiveValue(EntryIndex entryIndex, DependencyProperty dp, PropertyMetadata metadata, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType)
+   at System.Windows.DependencyObject.SetValueCommon(DependencyProperty dp, Object value, PropertyMetadata metadata, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType, Boolean isInternal)
+   at System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
+   at System.Windows.Controls.ItemsControl.set_ItemsSource(IEnumerable value)
+   at PC.Views.CreateForm.UserControl_Loaded(Object sender, RoutedEventArgs e) in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 44
+-------------------------------
+
+Log Entry : 3:02:46 PM
+  :
+  =====>:Items collection must be empty before using ItemsSource.   at System.Windows.Controls.ItemCollection.SetItemsSource(IEnumerable value, Func`2 GetSourceItem)
+   at System.Windows.Controls.ItemsControl.OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.NotifyPropertyChange(DependencyPropertyChangedEventArgs args)
+   at System.Windows.DependencyObject.UpdateEffectiveValue(EntryIndex entryIndex, DependencyProperty dp, PropertyMetadata metadata, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType)
+   at System.Windows.DependencyObject.SetValueCommon(DependencyProperty dp, Object value, PropertyMetadata metadata, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType, Boolean isInternal)
+   at System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
+   at System.Windows.Controls.ItemsControl.set_ItemsSource(IEnumerable value)
+   at PC.Views.CreateForm.UserControl_Loaded(Object sender, RoutedEventArgs e) in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 44
+-------------------------------
+
+Log Entry : 3:04:49 PM
+  :
+  =====>:Items collection must be empty before using ItemsSource.   at System.Windows.Controls.ItemCollection.SetItemsSource(IEnumerable value, Func`2 GetSourceItem)
+   at System.Windows.Controls.ItemsControl.OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.NotifyPropertyChange(DependencyPropertyChangedEventArgs args)
+   at System.Windows.DependencyObject.UpdateEffectiveValue(EntryIndex entryIndex, DependencyProperty dp, PropertyMetadata metadata, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType)
+   at System.Windows.DependencyObject.SetValueCommon(DependencyProperty dp, Object value, PropertyMetadata metadata, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType, Boolean isInternal)
+   at System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
+   at System.Windows.Controls.ItemsControl.set_ItemsSource(IEnumerable value)
+   at PC.Views.CreateForm..ctor() in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 41
+-------------------------------
+
+Log Entry : 3:24:07 PM
+  :
+  =====>:Operation is not valid while ItemsSource is in use. Access and modify elements with ItemsControl.ItemsSource instead.   at System.Windows.Controls.ItemCollection.CheckIsUsingInnerView()
+   at System.Windows.Controls.ItemCollection.Add(Object newItem)
+   at PC.Views.CreateForm..ctor() in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 46
+-------------------------------
+
+Log Entry : 3:25:33 PM
+  :
+  =====>:Operation is not valid while ItemsSource is in use. Access and modify elements with ItemsControl.ItemsSource instead.   at System.Windows.Controls.ItemCollection.CheckIsUsingInnerView()
+   at System.Windows.Controls.ItemCollection.Add(Object newItem)
+   at PC.Views.CreateForm..ctor() in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 46
+-------------------------------
+
+Log Entry : 4:13:18 PM
+  :
+  =====>:Object reference not set to an instance of an object.
+   at PC.Views.CreateForm.<BtnSaveClickAsync>d__3.MoveNext() in E:\Projects\PC\PC\Views\CreateForm.xaml.cs:line 67
+-------------------------------

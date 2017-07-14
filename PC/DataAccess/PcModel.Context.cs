@@ -27,5 +27,6 @@ namespace PC.DataAccess
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Pc> Pcs { get; set; }
+        public virtual DbSet<Office> Offices { get; set; }
     }
 }

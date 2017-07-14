@@ -16,4 +16,11 @@ namespace PC.Utils
         IP,
         Location
     }
+
+    public enum Types
+    {
+        PC, 
+        Laptop,
+        DELL
+    }
 }

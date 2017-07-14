@@ -32,5 +32,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Offices">
+      <EntityTypeMapping TypeName="PCModel.Office">
+        <MappingFragment StoreEntitySet="Office">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

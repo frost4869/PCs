@@ -72,3 +72,5 @@ E:\Projects\PC\PC\obj\Debug\PC.exe
 E:\Projects\PC\PC\obj\Debug\PC.pdb
 E:\Projects\PC\PC\obj\Debug\StartupWindow.g.cs
 E:\Projects\PC\PC\obj\Debug\StartupWindow.baml
+E:\Projects\PC\PC\obj\Debug\Views\OtherLocation.g.cs
+E:\Projects\PC\PC\obj\Debug\Views\OtherLocation.baml

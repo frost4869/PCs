@@ -3,6 +3,7 @@
   <EntityContainer Name="PCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Users" EntityType="PCModel.User" />
     <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
+    <EntitySet Name="Offices" EntityType="PCModel.Office" />
   </EntityContainer>
   <EntityType Name="User">
     <Key>
@@ -31,6 +32,14 @@
     <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Office">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

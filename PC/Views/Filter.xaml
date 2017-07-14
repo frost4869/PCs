@@ -77,33 +77,35 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Style="{DynamicResource DescriptionHeaderStyle}"/>
-                
+
                 <DataGrid x:Name="pcDataGrid" 
                       Grid.Row="1"
                       RowDetailsVisibilityMode="VisibleWhenSelected" 
                       Margin="0,10,0,0" ItemsSource="{Binding}" 
                       EnableRowVirtualization="True" 
+                      EnableColumnVirtualization="True"
                       AutoGenerateColumns="False" 
-                      ColumnWidth="*" 
-                      HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                       Style="{DynamicResource AzureDataGrid}"
                       GridLinesVisibility="All"
-                      IsReadOnly="True">
+                      IsReadOnly="True"
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="pC_NameColumn" Width="*" Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="nVColumn" Width="*" Header="NV" Binding="{Binding NV, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="nVCodeColumn" Width="*" Header="NVCode" Binding="{Binding NVCode, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="pBColumn" Width="*" Header="PB" Binding="{Binding PB, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="iPColumn" Width="*" Header="IP" Binding="{Binding IP, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="mACColumn" Width="*" Header="MAC" Binding="{Binding MAC, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="mAC2Column" Width="*" Header="MAC 2" Binding="{Binding MAC2, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="office_LocatedColumn" Width="*" Header="Office Located" Binding="{Binding Office_Located, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="cPUColumn" Width="*" Header="CPU" Binding="{Binding CPU, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="hDDColumn" Width="*" Header="HDD" Binding="{Binding HDD, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="oSColumn" Width="*" Header="OS" Binding="{Binding OS, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="rAMColumn" Width="*" Header="RAM" Binding="{Binding RAM, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="typeColumn" Width="*" Header="Type" Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="pC_NameColumn"  Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="nVColumn"  Header="NV" Binding="{Binding NV, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="nVCodeColumn"  Header="NVCode" Binding="{Binding NVCode, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="pBColumn"  Header="PB" Binding="{Binding PB, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="iPColumn"  Header="IP" Binding="{Binding IP, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="mACColumn"  Header="MAC" Binding="{Binding MAC, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="mAC2Column"  Header="MAC 2" Binding="{Binding MAC2, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="office_LocatedColumn"  Header="Office Located" Binding="{Binding Office_Located, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="cPUColumn"  Header="CPU" Binding="{Binding CPU, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="hDDColumn"  Header="HDD" Binding="{Binding HDD, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="oSColumn"  Header="OS" Binding="{Binding OS, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="rAMColumn"  Header="RAM" Binding="{Binding RAM, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="typeColumn"  Header="Type" Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

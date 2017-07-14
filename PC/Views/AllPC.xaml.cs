@@ -186,7 +186,7 @@ namespace PC.Views
             catch (Exception ex)
             {
                 await Util.ShowMessageBoxAsync("Error !", "Error occured: " + ex.Message);
-                Util.WriteLog(ex.Message);
+                Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
             }
 
             changesCounts = 0;
@@ -264,7 +264,7 @@ namespace PC.Views
             {
                 await controller.CloseAsync();
                 await Util.ShowMessageBoxAsync("Error", ex.Message);
-                Util.WriteLog(ex.Message);
+                Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
             }
             finally
             {

@@ -27,7 +27,7 @@ namespace PC.Views
     public partial class Filter : UserControl
     {
         private ObservableCollection<Pc> pcViewSource = new ObservableCollection<Pc>();
-        
+
         public Filter()
         {
             InitializeComponent();
@@ -39,6 +39,7 @@ namespace PC.Views
                     pcDataGrid.ItemsSource = db.Pcs.Local;
                 }
             }
+
         }
 
         private void BtnAddFilterClick(object sender, RoutedEventArgs e)
@@ -60,8 +61,8 @@ namespace PC.Views
                         var filterOption = (Filters)Enum.Parse(typeof(Filters), filterOptionObject.ToString());
 
                         var filterText = ((item as FilteriItem).FindName("filter_value") as TextBox).Text;
-
-                        result = LoadDataSource(result, filterOption, filterText.ToLower());
+                        var location_option = ((item as FilteriItem).FindName("location_options") as ComboBox).SelectedItem.ToString();
+                        result = LoadDataSource(result, filterOption, filterText.ToLower(), location_option);
                     }
                 }
 
@@ -74,13 +75,14 @@ namespace PC.Views
         {
 
             // Do not load your data at design time.
-            
+
         }
 
-        private IEnumerable<Pc> LoadDataSource(IEnumerable<Pc> PcList, Filters? option, string query)
+        private IEnumerable<Pc> LoadDataSource(IEnumerable<Pc> PcList, Filters? option, string query, string location_option)
         {
-            
+
             query = Util.RejectMarks(query);
+            location_option = Util.RejectMarks(location_option);
 
             using (var db = new PCEntities())
             {
@@ -95,7 +97,7 @@ namespace PC.Views
                             PcList = PcList.Where(q => Util.RejectMarks(q.PB).Contains(query) && q.Active == true);
                             break;
                         case Filters.NV:
-                            PcList = PcList.Where(q => Util.RejectMarks(q.NV).Contains(query) && 
+                            PcList = PcList.Where(q => Util.RejectMarks(q.NV).Contains(query) &&
                                             q.Active == true);
                             break;
                         case Filters.MAC:
@@ -108,7 +110,7 @@ namespace PC.Views
                             PcList = PcList.Where(q => q.IP.Equals(query) && q.Active == true);
                             break;
                         case Filters.Location:
-                            PcList = PcList.Where(q => Util.RejectMarks(q.Office_Located).Contains(query) && 
+                            PcList = PcList.Where(q => Util.RejectMarks(q.Office_Located).Contains(location_option) &&
                                             q.Active == true);
                             break;
                         default:

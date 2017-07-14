@@ -31,7 +31,7 @@ namespace PC.Utils
                 }
                 catch (Exception ex)
                 {
-                    Util.WriteLog(ex.Message);
+                    Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
                     Util.ShowMessageBoxAsync("Error", ex.Message);
                     throw;
                 }

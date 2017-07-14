@@ -99,7 +99,7 @@ namespace PC.Views
                     {
                         await controller.CloseAsync();
                         await metroWindow.ShowMessageAsync("Error", ex.Message);
-                        Util.WriteLog(ex.Message);
+                        Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
                     }
                 }
             }

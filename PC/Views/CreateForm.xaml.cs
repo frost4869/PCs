@@ -1,23 +1,12 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using PC.DataAccess;
-using PC.DataAccess.Repository;
 using PC.Utils;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PC.Views
 {
@@ -31,11 +20,36 @@ namespace PC.Views
         {
             InitializeComponent();
             pc_form.DataContext = pc;
+
+            try
+            {
+                using (var db = new PCEntities())
+                {
+                    var locations = db.Offices.AsQueryable().Select(q => q.Location).ToList();
+                    foreach (var office in locations)
+                    {
+                        office_LocatedComboBox.Items.Add(office);
+                    }
+
+                    var item = new ComboBoxItem();
+                    OtherLocation otherlocation = new OtherLocation();
+                    item.Content = otherlocation;
+                    office_LocatedComboBox.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Util.WriteLog(ex.Message + ex.StackTrace);
+                Util.ShowMessageBoxAsync("Error", ex.Message);
+                throw;
+            }
+
+            office_LocatedComboBox.SelectedIndex = 0;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            type_combo_box.ItemsSource = Enum.GetValues(typeof(Types)).Cast<Types>();
         }
 
         private async void BtnSaveClickAsync(object sender, RoutedEventArgs e)
@@ -51,7 +65,24 @@ namespace PC.Views
                 {
                     try
                     {
+                        var otherLocation = ((office_LocatedComboBox.Items
+                            .GetItemAt(office_LocatedComboBox.Items.Count - 1) as ComboBoxItem).Content as OtherLocation)
+                            .FindChild<TextBox>("txt_otherLocation").Text;
+
+                        if (!string.IsNullOrEmpty(otherLocation))
+                        {
+                            db.Offices.Add(new Office
+                            {
+                                Location = otherLocation,
+                                Active = true,
+                            });
+                            await db.SaveChangesAsync();
+
+                            pc.Office_Located = otherLocation;
+                        }
+
                         pc.Active = true;
+
                         db.Pcs.Add(pc);
                         await db.SaveChangesAsync();
 
@@ -60,7 +91,7 @@ namespace PC.Views
                     }
                     catch (Exception ex)
                     {
-                        Util.WriteLog(ex.Message);
+                        Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
                         Util.ShowMessageBoxAsync("Error", ex.Message);
                         throw;
                     }
@@ -81,7 +112,7 @@ namespace PC.Views
             {
                 using (var db = new PCEntities())
                 {
-                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(pc.PC_Name.ToLower())))
+                    if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(pc.PC_Name.ToLower()) && q.Active == true))
                     {
                         check.ValidateMessage = "Pc already existed";
                         return check;

@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:PC"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Height="600" Width="1000" Loaded="Window_Loaded">
+        Height="300" Width="500" Loaded="Window_Loaded">
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CloseCommand}" Gesture="ALT+F4" />
+    </Window.InputBindings>
+    
     <Grid>
         
     </Grid>

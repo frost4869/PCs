@@ -28,6 +28,8 @@ namespace PC
             ShowDialogsOverTitleBar = false;
             ShowCloseButton = true;
 
+            DataContext = new MyDataContext();
+
             Assembly assembly = Assembly.GetEntryAssembly();
             this.Title = "Quản lý PC - v" + assembly.GetName().Version;
         }
@@ -84,7 +86,7 @@ namespace PC
                 }
                 catch (Exception ex)
                 {
-                    Util.WriteLog(ex.Message);
+                    Util.WriteLog(ex.Message + "\n" + ex.StackTrace);
 
                     await this.Dispatcher.Invoke(async () =>
                      {

@@ -105,6 +105,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataAccess\Office.cs">
+      <DependentUpon>PcModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Pc.cs">
       <DependentUpon>PcModel.tt</DependentUpon>
     </Compile>
@@ -129,10 +132,12 @@
     <Compile Include="StartupWindow.xaml.cs">
       <DependentUpon>StartupWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\CloseCommand.cs" />
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\Enum.cs" />
     <Compile Include="Utils\ExcelImportValidation.cs" />
     <Compile Include="Utils\InputMacValidation.cs" />
+    <Compile Include="Utils\MyDataContext.cs" />
     <Compile Include="Utils\NewPcValidation.cs" />
     <Compile Include="Utils\PcValidation.cs" />
     <Compile Include="Utils\Util.cs" />
@@ -154,6 +159,9 @@
     </Compile>
     <Compile Include="Views\ImportExcel.xaml.cs">
       <DependentUpon>ImportExcel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OtherLocation.xaml.cs">
+      <DependentUpon>OtherLocation.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ImportExcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OtherLocation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
