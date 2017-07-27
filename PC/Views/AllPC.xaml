@@ -9,7 +9,7 @@
 
     xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
     mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded">
     <!--<UserControl.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModels:PcViewModel}, CreateList=True}"/>
     </UserControl.Resources>-->
@@ -21,14 +21,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <StackPanel.Resources>
+        <DockPanel Grid.Row="0">
+            <DockPanel.Resources>
                 <Style x:Key="CustomMetroToggleSwitchButton"
                        BasedOn="{StaticResource MahApps.Metro.Styles.ToggleSwitchButton}"
                        TargetType="{x:Type Controls:ToggleSwitchButton}">
                     <Setter Property="SwitchForeground" Value="YellowGreen" />
                 </Style>
-            </StackPanel.Resources>
+            </DockPanel.Resources>
             <Controls:ToggleSwitch Margin="10 5 0 0"
                                    x:Name="btn_toggle_edit"
                                    Header="Edit Mode"
@@ -47,11 +47,19 @@
                 Margin="10 15 0 15"
                 Style="{DynamicResource SquareButtonStyle}"
                 Visibility="Hidden"/>
+
             
-        </StackPanel>
-        <Button x:Name="BtnExport" Grid.Row="0" Content="Export to Excel File"
-                    HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0"
-                    Style="{DynamicResource SquareButtonStyle}" Click="BtnExport_Click" Height="35"/>
+            <Button x:Name="BtnExport" Grid.Row="0" Content="Export to Excel File"
+                    HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="10 15 10 15"
+                    Style="{DynamicResource SquareButtonStyle}" Click="BtnExport_Click" />
+        </DockPanel>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+            <ComboBox Grid.Row="1" x:Name="filter_options" Margin="10 15 0 15" Width="106" SelectedIndex="0"
+                      SelectionChanged="filter_options_SelectionChanged" DropDownClosed="filter_options_DropDownClosed"></ComboBox>
+            <TextBox Grid.Row="1" x:Name="txt_filter_value" Margin="10 15 0 15" Width="200" KeyDown="txt_filter_value_KeyDown"/>
+            <ComboBox Grid.Row="1" x:Name="office_locations" Margin="10 15 0 15" Width="200" Visibility="Collapsed"
+                      SelectionChanged="office_locations_SelectionChanged"></ComboBox>
+        </DockPanel>
         <DataGrid x:Name="pcDataGrid" 
                   Grid.Row="2"
                   ItemsSource="{Binding}" 
@@ -133,6 +141,6 @@
                 </ControlTemplate>
             </DataGrid.RowValidationErrorTemplate>
         </DataGrid>
-        
+
     </Grid>
 </UserControl>

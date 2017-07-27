@@ -101,10 +101,10 @@ namespace PC.Views
                                             q.Active == true);
                             break;
                         case Filters.MAC:
-                            PcList = PcList.Where(q => q.MAC.Equals(query) && q.Active == true);
+                            PcList = PcList.Where(q => q.MAC != null && q.MAC.ToLower().Equals(query) && q.Active == true);
                             break;
                         case Filters.MAC2:
-                            PcList = PcList.Where(q => q.MAC2.Equals(query) && q.Active == true);
+                            PcList = PcList.Where(q => q.MAC2 != null && q.MAC2.ToLower().Equals(query) && q.Active == true);
                             break;
                         case Filters.IP:
                             PcList = PcList.Where(q => q.IP.Equals(query) && q.Active == true);

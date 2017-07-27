@@ -90,7 +90,8 @@
                       IsReadOnly="True"
                       ScrollViewer.CanContentScroll="True" 
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      SelectionUnit="CellOrRowHeader">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="pC_NameColumn"  Header="Tên" Binding="{Binding PC_Name, UpdateSourceTrigger=PropertyChanged}"/>

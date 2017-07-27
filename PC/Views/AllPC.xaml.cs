@@ -14,6 +14,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using Microsoft.Win32;
+using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace PC.Views
 {
@@ -33,6 +35,10 @@ namespace PC.Views
         public AllPC()
         {
             InitializeComponent();
+            filter_options.ItemsSource = Enum.GetValues(typeof(Filters)).Cast<Filters>();
+
+            var locations = db.Offices.ToList();
+            office_locations.ItemsSource = locations.Select(q => q.Location);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -289,6 +295,108 @@ namespace PC.Views
             {
                 item.IsSelected = false;
             }
+        }
+
+        private void txt_filter_value_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Return))
+            {
+                if (string.IsNullOrEmpty(txt_filter_value.Text))
+                {
+                    LoadDataSource();
+                }
+                else
+                {
+                    var query = txt_filter_value.Text;
+                    var filterOption = (Filters)Enum.Parse(typeof(Filters), filter_options.SelectedItem.ToString());
+
+                    LoadDataSource(pcViewSource, filterOption, query);
+                }
+            }
+        }
+
+        private void LoadDataSource(IEnumerable<Pc> PcList, Filters? option, string query)
+        {
+            query = Util.RejectMarks(query);
+
+            using (var db = new PCEntities())
+            {
+                if (option != null)
+                {
+                    switch (option.Value)
+                    {
+                        case Filters.Pc_Name:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.PC_Name).Contains(query) && q.Active == true);
+                            break;
+                        case Filters.PB:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.PB).Contains(query) && q.Active == true);
+                            break;
+                        case Filters.NV:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.NV).Contains(query) &&
+                                            q.Active == true);
+                            break;
+                        case Filters.MAC:
+                            PcList = PcList.Where(q => q.MAC != null && q.MAC.ToLower().Equals(query) && q.Active == true);
+                            break;
+                        case Filters.MAC2:
+                            PcList = PcList.Where(q => q.MAC2 != null && q.MAC2.ToLower().Equals(query) && q.Active == true);
+                            break;
+                        case Filters.IP:
+                            PcList = PcList.Where(q => q.IP.Equals(query) && q.Active == true);
+                            break;
+                        case Filters.Location:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.Office_Located).Contains(query) &&
+                                            q.Active == true);
+                            break;
+                        case Filters.Service_Tag:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.ServiceTag).Contains(query) &&
+                                            q.Active == true);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                pcDataGrid.ItemsSource = Util.ToObservableCollection(PcList);
+            }
+        }
+
+        private bool handle = true;
+
+        private void Handle()
+        {
+            var filterOption = (Filters)Enum.Parse(typeof(Filters), filter_options.SelectedItem.ToString());
+
+            if (filterOption == Filters.Location)
+            {
+                txt_filter_value.Visibility = Visibility.Collapsed;
+                office_locations.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txt_filter_value.Visibility = Visibility.Visible;
+                office_locations.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void filter_options_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            handle = !cmb.IsDropDownOpen;
+            Handle();
+        }
+
+        private void filter_options_DropDownClosed(object sender, EventArgs e)
+        {
+            if (handle) Handle();
+            handle = true;
+        }
+
+        private void office_locations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            var location_option = cmb.SelectedItem.ToString();
+            pcDataGrid.ItemsSource = pcViewSource.Where(q => q.Office_Located.Equals(location_option) && q.Active);
         }
     }
 
