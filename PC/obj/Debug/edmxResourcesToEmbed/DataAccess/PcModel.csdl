@@ -2,8 +2,8 @@
 <Schema Namespace="PCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="PCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Users" EntityType="PCModel.User" />
-    <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
     <EntitySet Name="Offices" EntityType="PCModel.Office" />
+    <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
   </EntityContainer>
   <EntityType Name="User">
     <Key>
@@ -11,6 +11,14 @@
     </Key>
     <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Office">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Pc">
     <Key>
@@ -31,15 +39,10 @@
     <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Monitor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Mouse" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="KeyBoard" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Office">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

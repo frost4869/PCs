@@ -9,7 +9,7 @@
              xmlns:validations="clr-namespace:PC.Utils"
              xmlns:DataAccess="clr-namespace:PC.DataAccess" x:Class="PC.Views.CreateForm"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type DataAccess:Pc}, CreateList=True}"/>
         <ControlTemplate x:Key="validationTemplate">
@@ -49,6 +49,7 @@
 
         <Grid x:Name="pc_form" VerticalAlignment="Top" Margin="0,41,0,0" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -140,10 +141,16 @@
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="* Type:"/>
             <ComboBox x:Name="type_combo_box" SelectedIndex="0" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Service Tag:"/>
-            <TextBox x:Name="serviceTagTextBox" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Notes:"/>
-            <TextBox x:Name="notesTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalAlignment="Center" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,7,0,7" Height="66" HorizontalAlignment="Left" Grid.Column="3" Grid.RowSpan="2"/>
-            <Button x:Name="btnSave" Content="save" Grid.Row="8" Grid.Column="3" Width="100"   HorizontalContentAlignment="Center" Click="BtnSaveClickAsync" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 100 0"
+            <TextBox x:Name="serviceTagTextBox" TextWrapping="Wrap" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Monitor:"/>
+            <TextBox x:Name="monitorTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Text="{Binding Monitor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3"  HorizontalAlignment="Left" Grid.Column="3"/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Mouse:"/>
+            <TextBox x:Name="mouseTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Text="{Binding Mouse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3"  HorizontalAlignment="Left" Grid.Column="3"/>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Keyboard:"/>
+            <TextBox x:Name="keyboardTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Width="300" VerticalAlignment="Stretch" Text="{Binding KeyBoard, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="3"/>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Notes:"/>
+            <TextBox x:Name="notesTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Width="300" VerticalAlignment="Center" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3,7,0,7" Height="66" HorizontalAlignment="Left" Grid.Column="1" Grid.RowSpan="2"/>
+            <Button x:Name="btnSave" Content="save" Grid.Row="9" Grid.Column="3" Width="100"   HorizontalContentAlignment="Center" Click="BtnSaveClickAsync" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 3 0"
                     Style="{StaticResource buttonInError}" Height="30" FontSize="16" FontWeight="Bold"/>
         </Grid>
     </Grid>

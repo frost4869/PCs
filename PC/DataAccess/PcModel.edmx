@@ -32,6 +32,9 @@
           <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Monitor" Type="nvarchar" MaxLength="128" />
+          <Property Name="Mouse" Type="nvarchar" MaxLength="128" />
+          <Property Name="KeyBoard" Type="nvarchar" MaxLength="128" />
           <Property Name="Notes" Type="nvarchar(max)" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
@@ -53,8 +56,8 @@
       <Schema Namespace="PCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="PCModel.User" />
-          <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
           <EntitySet Name="Offices" EntityType="PCModel.Office" />
+          <EntitySet Name="Pcs" EntityType="PCModel.Pc" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -62,6 +65,14 @@
           </Key>
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Pc">
           <Key>
@@ -82,15 +93,10 @@
           <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Monitor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Mouse" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="KeyBoard" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Office">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
@@ -107,11 +113,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="PCModel.Office">
+              <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Pcs">
             <EntityTypeMapping TypeName="PCModel.Pc">
               <MappingFragment StoreEntitySet="Pc">
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="KeyBoard" ColumnName="KeyBoard" />
+                <ScalarProperty Name="Mouse" ColumnName="Mouse" />
+                <ScalarProperty Name="Monitor" ColumnName="Monitor" />
                 <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
                 <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
                 <ScalarProperty Name="PB" ColumnName="PB" />
@@ -126,15 +144,6 @@
                 <ScalarProperty Name="HDD" ColumnName="HDD" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Offices">
-            <EntityTypeMapping TypeName="PCModel.Office">
-              <MappingFragment StoreEntitySet="Office">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

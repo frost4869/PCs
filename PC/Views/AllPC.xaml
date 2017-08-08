@@ -10,10 +10,6 @@
     xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
     mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded">
-    <!--<UserControl.Resources>
-        <CollectionViewSource x:Key="pcViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModels:PcViewModel}, CreateList=True}"/>
-    </UserControl.Resources>-->
-    <!--<Grid DataContext="{StaticResource pcViewSource}">-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -48,7 +44,7 @@
                 Style="{DynamicResource SquareButtonStyle}"
                 Visibility="Hidden"/>
 
-            
+
             <Button x:Name="BtnExport" Grid.Row="0" Content="Export to Excel File"
                     HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="10 15 10 15"
                     Style="{DynamicResource SquareButtonStyle}" Click="BtnExport_Click" />
@@ -86,6 +82,8 @@
                                 Path=(Validation.Errors)[0].ErrorContent}"/>
                         </Trigger>
                     </Style.Triggers>
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                    <EventSetter Event="KeyDown" Handler="OnTextBoxKeyDown"/>
                 </Style>
             </DataGrid.Resources>
 
@@ -118,7 +116,16 @@
                 <DataGridTextColumn x:Name="oSColumn"  Header="OS" Binding="{Binding OS, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="rAMColumn"  Header="RAM" Binding="{Binding RAM, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="typeColumn"  Header="Type" Binding="{Binding Type, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="serviceTagColumn"  Header="Service Tag" Binding="{Binding ServiceTag, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="serviceTagColumn"  Header="Service Tag" Binding="{Binding ServiceTag, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="monitorColumn"  Header="Monitor" Binding="{Binding Monitor, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="mouseColumn"  Header="Mouse" Binding="{Binding Mouse, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="keyboardColumn"  Header="Keyboard" Binding="{Binding KeyBoard, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="notesColumn"  Header="Notes" Binding="{Binding Notes, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
 

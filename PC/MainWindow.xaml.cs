@@ -131,7 +131,10 @@ namespace PC
                         PB = listResultString[11] == "" ? null : listResultString[11],
                         Office_Located = listResultString[12] == "" ? null : listResultString[12],
                         ServiceTag = listResultString[13] == "" ? null : listResultString[13],
-                        Notes = listResultString[14] == "" ? null : listResultString[14],
+                        Monitor = listResultString[14] == "" ? null : listResultString[14],
+                        Mouse = listResultString[15] == "" ? null : listResultString[15],
+                        KeyBoard = listResultString[16] == "" ? null : listResultString[16],
+                        Notes = listResultString[17] == "" ? null : listResultString[17],
                     });
                 }
 

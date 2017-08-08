@@ -352,6 +352,9 @@ namespace PC.Views
                             PcList = PcList.Where(q => Util.RejectMarks(q.ServiceTag).Contains(query) &&
                                             q.Active == true);
                             break;
+                        case Filters.NV_Code:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.NVCode).Contains(query) && q.Active);
+                            break;
                         default:
                             break;
                     }
@@ -397,6 +400,19 @@ namespace PC.Views
             ComboBox cmb = sender as ComboBox;
             var location_option = cmb.SelectedItem.ToString();
             pcDataGrid.ItemsSource = pcViewSource.Where(q => q.Office_Located.Equals(location_option) && q.Active);
+        }
+
+        private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (Key.Return == e.Key &&
+                0 < (ModifierKeys.Shift & e.KeyboardDevice.Modifiers))
+            {
+                var tb = (TextBox)sender;
+                var caret = tb.CaretIndex;
+                tb.Text = tb.Text.Insert(caret, Environment.NewLine);
+                tb.CaretIndex = caret + 1;
+                e.Handled = true;
+            }
         }
     }
 

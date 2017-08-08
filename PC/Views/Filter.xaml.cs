@@ -113,6 +113,9 @@ namespace PC.Views
                             PcList = PcList.Where(q => Util.RejectMarks(q.Office_Located).Contains(location_option) &&
                                             q.Active == true);
                             break;
+                        case Filters.NV_Code:
+                            PcList = PcList.Where(q => Util.RejectMarks(q.NVCode).Contains(query) && q.Active);
+                            break;
                         default:
                             break;
                     }

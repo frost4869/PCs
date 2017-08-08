@@ -9,11 +9,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Offices">
+      <EntityTypeMapping TypeName="PCModel.Office">
+        <MappingFragment StoreEntitySet="Office">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Pcs">
       <EntityTypeMapping TypeName="PCModel.Pc">
         <MappingFragment StoreEntitySet="Pc">
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="KeyBoard" ColumnName="KeyBoard" />
+          <ScalarProperty Name="Mouse" ColumnName="Mouse" />
+          <ScalarProperty Name="Monitor" ColumnName="Monitor" />
           <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
           <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
           <ScalarProperty Name="PB" ColumnName="PB" />
@@ -28,15 +40,6 @@
           <ScalarProperty Name="HDD" ColumnName="HDD" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Offices">
-      <EntityTypeMapping TypeName="PCModel.Office">
-        <MappingFragment StoreEntitySet="Office">
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -15,6 +15,7 @@ namespace PC.Utils
         PB,
         [Display(Name = "Nhân Viên")]
         NV,
+        NV_Code,
         [Display(Name = "Mac Address 1")]
         MAC,
         [Display(Name = "Mac Address 2")]
