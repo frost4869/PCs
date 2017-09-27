@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\son\Projects\PC\PC\obj\Debug\
+F:\Projects\PC\PC\obj\Debug\
 PC
 none
 false
 DEBUG;TRACE
-F:\son\Projects\PC\PC\App.xaml
+F:\Projects\PC\PC\App.xaml
 8888391381
 2-1758280016
 38-410559994
-31553010864
+311783890273
 MainWindow.xaml;StartupWindow.xaml;Views\AllPC.xaml;Views\CreateForm.xaml;Views\Filter.xaml;Views\FilteriItem.xaml;Views\ImportExcel.xaml;Views\OtherLocation.xaml;
 
-False
+True
 

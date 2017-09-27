@@ -29,7 +29,7 @@ namespace PC.DataAccess
         public string PB { get; set; }
         public string Office_Located { get; set; }
         public string ServiceTag { get; set; }
-        public string Monitor { get; set; }
+        public string Model { get; set; }
         public string Mouse { get; set; }
         public string KeyBoard { get; set; }
         public string Notes { get; set; }

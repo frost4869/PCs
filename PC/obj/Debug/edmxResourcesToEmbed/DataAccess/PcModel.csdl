@@ -38,8 +38,8 @@
     <Property Name="NVCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Monitor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceTag" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Mouse" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="KeyBoard" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

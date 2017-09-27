@@ -107,7 +107,7 @@
                         <DataGridTextColumn x:Name="oSColumn"  Header="OS" Binding="{Binding OS, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="rAMColumn"  Header="RAM" Binding="{Binding RAM, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="typeColumn"  Header="Type" Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"/>
-                        <DataGridTextColumn x:Name="monitorColumn"  Header="Monitor" Binding="{Binding Monitor, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn x:Name="modelColumn"  Header="Model" Binding="{Binding Model, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="mouseColumn"  Header="Mouse" Binding="{Binding Mouse, UpdateSourceTrigger=PropertyChanged}"/>
                         <DataGridTextColumn x:Name="keyboardColumn"  Header="Keyboard" Binding="{Binding KeyBoard, UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGrid.Columns>

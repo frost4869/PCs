@@ -56,6 +56,11 @@ namespace PC.Utils
                         check.ValidateMessage += "PC Name is already existed.\n";
                         check.IsValidated = false;
                     }
+                    if (!string.IsNullOrEmpty(model.ServiceTag) && db.Pcs.Any(q => (q.ServiceTag.ToLower().Equals(model.ServiceTag.Trim().ToLower()) && q.ID != model.ID && q.Active == true)))
+                    {
+                        check.ValidateMessage += "Service Tag is already used.\n";
+                        check.IsValidated = false;
+                    }
                     if (String.IsNullOrEmpty(model.Type))
                     {
                         check.ValidateMessage += "Type must not be empty.\n";

@@ -14,7 +14,7 @@ namespace PC.Utils
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var inputValue = Convert.ToString(value);
+            var inputValue = Convert.ToString(value).Trim();
 
             using (var db = new PCEntities())
             {
@@ -23,6 +23,10 @@ namespace PC.Utils
                     if (db.Pcs.Any(q => q.PC_Name.ToLower().Equals(inputValue.ToLower()) && q.Active == true))
                     {
                         return new ValidationResult(false, "Pc Name is already existed !");
+                    }
+                    else if (!string.IsNullOrEmpty(inputValue) && db.Pcs.Any(q => q.ServiceTag.ToLower().Equals(inputValue.ToLower()) && q.Active == true))
+                    {
+                        return new ValidationResult(false, "Service Tag is already existed !");
                     }
                     else
                     {

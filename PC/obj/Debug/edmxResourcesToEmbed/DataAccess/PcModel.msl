@@ -25,7 +25,7 @@
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="KeyBoard" ColumnName="KeyBoard" />
           <ScalarProperty Name="Mouse" ColumnName="Mouse" />
-          <ScalarProperty Name="Monitor" ColumnName="Monitor" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
           <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
           <ScalarProperty Name="PB" ColumnName="PB" />

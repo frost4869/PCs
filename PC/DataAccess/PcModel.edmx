@@ -31,8 +31,8 @@
           <Property Name="NVCode" Type="nvarchar" MaxLength="50" />
           <Property Name="PB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Office_Located" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" />
-          <Property Name="Monitor" Type="nvarchar" MaxLength="128" />
+          <Property Name="ServiceTag" Type="nvarchar" MaxLength="128" />
+          <Property Name="Model" Type="nvarchar" MaxLength="128" />
           <Property Name="Mouse" Type="nvarchar" MaxLength="128" />
           <Property Name="KeyBoard" Type="nvarchar" MaxLength="128" />
           <Property Name="Notes" Type="nvarchar(max)" />
@@ -92,8 +92,8 @@
           <Property Name="NVCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Office_Located" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Monitor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTag" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Mouse" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="KeyBoard" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -129,7 +129,7 @@
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="KeyBoard" ColumnName="KeyBoard" />
                 <ScalarProperty Name="Mouse" ColumnName="Mouse" />
-                <ScalarProperty Name="Monitor" ColumnName="Monitor" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
                 <ScalarProperty Name="Office_Located" ColumnName="Office_Located" />
                 <ScalarProperty Name="PB" ColumnName="PB" />

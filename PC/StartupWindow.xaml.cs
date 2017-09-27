@@ -29,7 +29,8 @@ namespace PC
             ShowCloseButton = true;
 
             DataContext = new MyDataContext();
-
+            this.EnableDWMDropShadow = true;
+            WindowStyle = WindowStyle.SingleBorderWindow;
             Assembly assembly = Assembly.GetEntryAssembly();
             this.Title = "Quản lý PC - v" + assembly.GetName().Version;
         }

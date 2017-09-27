@@ -28,19 +28,27 @@
                 <Trigger Property="Validation.HasError" Value="true">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
                               Path=(Validation.Errors)[0].ErrorContent}"/>
+                    
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="buttonInError" TargetType="Button">
             <Style.Triggers>
-                <MultiDataTrigger>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </Trigger>
+                <!--<MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding Path=(Validation.HasError), ElementName=pC_NameTextBox}" Value="true"/>
+                        --><!--<Condition Binding="{Binding Path=(Validation.HasError), ElementName=serviceTagTextBox}" Value="true"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=mACTextBox}" Value="true"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=mAC2TextBox}" Value="true"/>--><!--
+
                     </MultiDataTrigger.Conditions>
                     <Setter Property="IsEnabled" Value="False"/>
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
                         Path=(Validation.Errors)[0].ErrorContent}"/>
-                </MultiDataTrigger>
+                </MultiDataTrigger>-->
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
@@ -70,7 +78,6 @@
             <TextBox x:Name="pC_NameTextBox" Width="300" VerticalAlignment="Center" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
                      Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Style="{StaticResource textBoxInError}">
-
                 <TextBox.Text>
                     <Binding Path="PC_Name"
                              Mode="TwoWay"
@@ -82,7 +89,6 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-
             </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nhân Viên:"/>
             <TextBox x:Name="nVTextBox" Width="300" VerticalAlignment="Center" Text="{Binding NV, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -96,7 +102,6 @@
             <TextBox x:Name="mACTextBox" Width="300" VerticalAlignment="Center" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
                      Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Style="{StaticResource textBoxInError}">
-
                 <TextBox.Text>
                     <Binding Path="MAC"
                              Mode="TwoWay"
@@ -108,13 +113,11 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-
             </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="MAC 2:"/>
             <TextBox x:Name="mAC2TextBox" Width="300" VerticalAlignment="Center" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
                      Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Style="{StaticResource textBoxInError}">
-
                 <TextBox.Text>
                     <Binding Path="MAC2"
                              Mode="TwoWay"
@@ -126,7 +129,6 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-
             </TextBox>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="* Office Located:"/>
             <ComboBox Grid.Row="7" Grid.Column="1" Margin="3" Width="300" Height="23" x:Name="office_LocatedComboBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding Office_Located, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -141,9 +143,23 @@
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="* Type:"/>
             <ComboBox x:Name="type_combo_box" SelectedIndex="0" Width="300" VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Service Tag:"/>
-            <TextBox x:Name="serviceTagTextBox" TextWrapping="Wrap" Width="300" VerticalAlignment="Center" Text="{Binding ServiceTag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Monitor:"/>
-            <TextBox x:Name="monitorTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Text="{Binding Monitor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3"  HorizontalAlignment="Left" Grid.Column="3"/>
+            <TextBox x:Name="serviceTagTextBox" Width="300" VerticalAlignment="Center" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="3"
+                     Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Style="{StaticResource textBoxInError}">
+                <TextBox.Text>
+                    <Binding Path="ServiceTag"
+                             Mode="TwoWay"
+                             NotifyOnValidationError="True"
+                             ValidatesOnExceptions="True"
+                             ValidatesOnDataErrors="True">
+                        <Binding.ValidationRules>
+                            <validations:NewPcValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Model:"/>
+            <TextBox x:Name="modelTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Text="{Binding Model, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3"  HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Mouse:"/>
             <TextBox x:Name="mouseTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="300" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Text="{Binding Mouse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3"  HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="8" Margin="40 0 0 0" HorizontalAlignment="Left" Grid.Column="2" Content="Keyboard:"/>

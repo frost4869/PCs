@@ -103,30 +103,30 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="pC_NameColumn"  Header="Tên" Binding="{Binding PC_Name, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="nVColumn"  Header="NV" Binding="{Binding NV, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="nVCodeColumn"  Header="NVCode" Binding="{Binding NVCode, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="pBColumn"  Header="PB" Binding="{Binding PB, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="iPColumn"  Header="IP" Binding="{Binding IP, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="mACColumn"  Header="MAC" Binding="{Binding MAC, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="mAC2Column"  Header="MAC 2" Binding="{Binding MAC2, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="office_LocatedColumn"  Header="Office Located" Binding="{Binding Office_Located, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="cPUColumn"  Header="CPU" Binding="{Binding CPU, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="hDDColumn"  Header="HDD" Binding="{Binding HDD, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="oSColumn"  Header="OS" Binding="{Binding OS, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="rAMColumn"  Header="RAM" Binding="{Binding RAM, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="typeColumn"  Header="Type" Binding="{Binding Type, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="serviceTagColumn"  Header="Service Tag" Binding="{Binding ServiceTag, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}">
+                <DataGridTextColumn Width="Auto" x:Name="pC_NameColumn"  Header="Tên" Binding="{Binding PC_Name, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="nVColumn"  Header="NV" Binding="{Binding NV, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="nVCodeColumn"  Header="NVCode" Binding="{Binding NVCode, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="pBColumn"  Header="PB" Binding="{Binding PB, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="iPColumn"  Header="IP" Binding="{Binding IP, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="mACColumn"  Header="MAC" Binding="{Binding MAC, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="mAC2Column"  Header="MAC 2" Binding="{Binding MAC2, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="office_LocatedColumn"  Header="Office Located" Binding="{Binding Office_Located, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="cPUColumn"  Header="CPU" Binding="{Binding CPU, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="hDDColumn"  Header="HDD" Binding="{Binding HDD, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="oSColumn"  Header="OS" Binding="{Binding OS, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="rAMColumn"  Header="RAM" Binding="{Binding RAM, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="typeColumn"  Header="Type" Binding="{Binding Type, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="serviceTagColumn"  Header="Service Tag" Binding="{Binding ServiceTag, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="monitorColumn"  Header="Monitor" Binding="{Binding Monitor, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="mouseColumn"  Header="Mouse" Binding="{Binding Mouse, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="keyboardColumn"  Header="Keyboard" Binding="{Binding KeyBoard, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="notesColumn"  Header="Notes" Binding="{Binding Notes, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="modelColumn"  Header="Model" Binding="{Binding Model, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="mouseColumn"  Header="Mouse" Binding="{Binding Mouse, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="keyboardColumn"  Header="Keyboard" Binding="{Binding KeyBoard, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn Width="Auto" x:Name="notesColumn"  Header="Notes" Binding="{Binding Notes, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
 
             <DataGrid.RowValidationRules>
